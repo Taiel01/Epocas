@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+   <!-- Head -->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InfiniteGame</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Island+Moments&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="body" id="body">
+
+    <!-- Nav -->
+
+    <div class="contenedorDelNav">
+        <nav class="nav">
+            <div class="gridItemDelNav">
+
+                <img src="iconos/monedas.png" alt="InfiniteCoin" class="monedaIcono icono">
+
+            </div>
+            <div class="gridItemDelNav">
+
+                <p class="balance" id="infiniteCoin">0</p>
+
+            </div>
+            <div class="gridItemDelNav">
+
+                <img src="iconos/tienda.png" class="tiendaIcono icono">
+
+            </div>
+            <div class="gridItemDelNav">
+
+                <img src="iconos/logros.png" class="logrosIcono icono">
+
+            </div>
+        </nav>
+    </div>
+
+
+    
+    <!-- Modal del inventario -->
+
+    <section class="modal_padre_inventario">
+        <div class="modal_cuerpo_inventario">
+            <div class="divParaElCloseDelInventario">
+
+                <a href="#" class="boton_close_inventario">Close</a>
+
+            </div>
+        </div>
+
+    <!-- Modal de la tienda -->
+
+    </section>
+    <section class="modal_padre_tienda">
+        <div class="modal_cuerpo_tienda">
+            <div class="divParaElCloseDeLaTienda">
+
+                <a href="#" class="boton_close_tienda">Close</a>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de logros -->
+
+    </section>
+    <section class="modal_padre_logros">
+        <div class="modal_cuerpo_logros">
+            <div class="divParaElCloseDeLogros">
+
+                <a href="#" class="boton_close_logros">Close</a>
+
+           </div>
+    </div>
+</section>
+
+    <!-- Icono de la BAG y del ADN -->
+
+    <div class="contenedorDelMein">
+        <div class="contenedorDelAdn">
+            <div class="contenedorDelInventario">
+                <img src="iconos/bag.png" class="bag icono">
+            </div>
+
+            <img src="iconos/lineaTemporal/adn.png" id="adn" class="Adn">
+
+        </div>
+
+    <!-- Nombre de tu mundo, imagen y descipcion de los eventos-->
+
+        <div class="gridItems2 gridItem2_1">
+
+            <p class="nombreDeTuMundo" id="nombreDeTuMundo1">"Nombre de tu mundo"</p>
+
+            <img src="iconos/lineaTemporal/vida.png" class="vidaImg icono" id="vidaIc">
+
+            <p class="UltimoEvento" id="ultimoEvento">Estas en el laboratorio hace meses, realmente empiezas a pensar que nada funcionará..</p>
+
+        </div>
+
+    <!-- Cofre Diario, contador, soundtrack -->
+
+        <div class="gridItems2 gridItem2_2">
+
+            <img src="iconos/cofreDiario.png" class="cofreDiario icono" id="cofreDiario"><br>
+
+            <span class="contadorParaElCofreDiario" id="countdown"></span>
+        
+            <div class="contenedorDelSoundtrack">
+                <img src="soundtracks/mute.png" class="muteSound" id="mute">
+            </div>
+
+        </div>
+
+        <audio src="soundtracks/soundtrack.mp3" id="soundtrack"></audio>
+
+    <!-- Script del JS -->
+
+        <script src="js.js"></script>
+
+    </div>
+</body>
+</html>
