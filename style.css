@@ -117,7 +117,7 @@
     margin-top: -5px;
 }
 
-/*  */
+/* Dvis que estan dentro del main contienen cosas */
 
 .gridItems2{
     text-align: center;
@@ -168,12 +168,13 @@
 }
 
 .modal_cuerpo_tienda{
+    display: grid;
     margin: 35px;
     width: 90%;
-    max-width: 600px;
-    max-height: 400px;
+    max-width: 230px;
+    max-height: 495px;
     border-radius: 6px;
-    padding: 3em 2.5em;
+    padding: 1em 2.5em;
     background: radial-gradient(circle, rgb(99 224 255) 0%, rgb(255 255 255) 100%);
     display: grid;
     gap: 1em;
@@ -194,10 +195,6 @@
     box-shadow: 2px 1px;
 }
 
-.divParaElCloseDeLaTienda{
-    padding-top: 395px;
-}
-
 .modal--show_1{
     opacity: 1;
     pointer-events: unset;
@@ -205,6 +202,24 @@
     --transform: translateY(0);
 }
 
+/* Cofres de la tienda */
+
+.divPadreDeLosItemsDeLaTienda{
+    padding-right: 1px;
+
+}
+
+.itemDeLaTienda_1{
+    border: 3px solid rgb(16, 2, 54);
+    box-shadow: 2px 1px;
+    border-radius: 11px;
+}
+
+.cofreDeMadera{
+    width: 80px;
+    height: 80px;
+    padding: 5px 5px 5px 5px;
+}
 
 /*Inventario*/
 
@@ -226,7 +241,7 @@
 .modal_cuerpo_inventario{
     margin: 35px;
     width: 90%;
-    max-width: 600px;
+    max-width: 300px;
     max-height: 400px;
     border-radius: 120px;
     padding: 3em 2.5em;
