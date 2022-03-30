@@ -2,6 +2,12 @@
     font-family:'Rubik',Impact;
 }
 
+.body{
+    background: linear-gradient(90deg, rgba(165,255,228,1) 0%, rgba(176,246,242,1) 42%, rgba(168,217,255,1) 100%);
+    width: 360px;
+    height: 651px;
+}
+
 /* Nav */
 
 .nav{
@@ -141,14 +147,6 @@
     padding-top: 20px;
 }
 
-.muteSound{
-    width: 34px;
-    height: 34px;
-}
-
-.body{
-    background: linear-gradient(90deg, rgba(165,255,228,1) 0%, rgba(176,246,242,1) 42%, rgba(168,217,255,1) 100%);
-}
 
 /* MODAL de la tienda*/
 
@@ -277,7 +275,7 @@
     --transform: translateY(0);
 }
 
-/* MODAL de Logros*/
+/* MODAL de Logros (Que es Setings en realidad)*/
 
 .modal_padre_logros{
     position: fixed;
@@ -322,7 +320,7 @@
 }
 
 .divParaElCloseDeLogros{
-    padding-top: 395px;
+    padding-top: 218px;
 }
 
 .modal--show_2{
@@ -330,4 +328,40 @@
     pointer-events: unset;
     transition: opacity .6s;
     --transform: translateY(0);
+}
+
+.logrosIcono{
+    width: 44px;
+    height: 44px;
+}
+
+/* Dentro de logos (Setings) */
+
+.p_delSoundtrack{
+    font-size: 28px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: 13px;
+}
+
+.contenedorDel_p_delSoundtrack{
+    border: 1px solid #120855;
+    border-radius: 11px;
+    box-shadow: 2px 4px 9px;
+}
+
+/*chat*/
+
+.contenedorDel_Chat{
+    border: 1px solid #120855;
+    border-radius: 11px;
+    box-shadow: 2px 4px 9px;
+    margin-top: 25px;
+}
+
+.p_delChat{
+    font-size: 28px;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin: 13px;
 }
