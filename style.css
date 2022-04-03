@@ -176,7 +176,6 @@
     background: radial-gradient(circle, rgb(99 224 255) 0%, rgb(255 255 255) 100%);
     display: grid;
     gap: 1em;
-    place-items: center;
     grid-auto-columns: 100%;
     transform: var(--transform);
     transition: transform .3s;
@@ -200,6 +199,9 @@
     --transform: translateY(0);
 }
 
+.divParaElCloseDeLaTienda{
+    margin-left: 73px;
+}
 /* Cofres de la tienda */
 
 .divPadreDeLosItemsDeLaTienda{
@@ -211,12 +213,53 @@
     border: 3px solid rgb(16, 2, 54);
     box-shadow: 2px 1px;
     border-radius: 11px;
+    width: 91px;
+    margin-left: 59px;
+    display: grid;
 }
 
-.cofreDeMadera{
+.cofres{
     width: 80px;
     height: 80px;
     padding: 5px 5px 5px 5px;
+}
+
+/* Mostrar informacion de los cofres de la tienda */
+
+.itemDeLaTienda_madera{
+    margin-left: -21px;
+
+    width: 237px;
+    transition: width 0.7s;
+
+    display: grid;
+    grid-template-columns: 39% 15%;
+    /*falta la transicion*/
+}
+
+.a1px{
+    font-size: 0px;
+}
+
+.a2px{
+    font-size: 13px;
+    margin-block-start: 6px;
+    margin-block-end: 0px;
+    padding: 2px;
+}
+
+.comprarCofreDeMadera{
+    color: green;
+    font-size: 15px;
+}
+
+.EstatsDelCofreDeMadera{
+    border: 1px solid rgb(16, 2, 54);
+    box-shadow: 1px 0.5px;
+    border-radius: 11px;
+    margin: 7px -9px 6px 0px;
+    width: 133px;
+    height: 75px;
 }
 
 /*Inventario*/
@@ -240,17 +283,17 @@
     margin: 35px;
     width: 90%;
     max-width: 300px;
-    max-height: 400px;
-    border-radius: 120px;
-    padding: 3em 2.5em;
+    max-height: 507px;
+    border-radius: 16px;
     border: 5px solid #d3ad90;
     background: radial-gradient(circle, rgb(255 195 133) 0%, rgb(255 255 255) 100%);
     display: grid;
-    gap: 1em;
+    grid-template-columns: 27% 27% 27%;
     place-items: center;
     grid-auto-columns: 100%;
     transform: var(--transform);
     transition: transform .3s;
+    overflow: auto;
 }
 
 .boton_close_inventario{
@@ -262,6 +305,7 @@
     display: inline-block;
     font-weight: 300;
     box-shadow: 2px 1px;
+    margin-left: 207px;
 }
 
 .divParaElCloseDelInventario{
@@ -274,6 +318,10 @@
     transition: opacity .6s;
     --transform: translateY(0);
 }
+
+/* Items en el inventario */
+
+
 
 /* MODAL de Logros (Que es Setings en realidad)*/
 
@@ -317,6 +365,7 @@
     display: inline-block;
     font-weight: 300;
     box-shadow: 2px 1px;
+    width: 35px;
 }
 
 .divParaElCloseDeLogros{
@@ -338,7 +387,7 @@
 /* Dentro de logos (Setings) */
 
 .p_delSoundtrack{
-    font-size: 28px;
+    font-size: 26px;
     padding-right: 10px;
     padding-left: 10px;
     margin: 13px;
@@ -348,7 +397,14 @@
     border: 1px solid #120855;
     border-radius: 11px;
     box-shadow: 2px 4px 9px;
+    width: 170px;
 }
+
+.contenedorDel_p_delSoundtrack:active{
+    background-color: rgba(59, 53, 145, 0.329);
+    width: 169px;
+}
+
 
 /*chat*/
 
@@ -357,11 +413,17 @@
     border-radius: 11px;
     box-shadow: 2px 4px 9px;
     margin-top: 25px;
+    width: 170px;
 }
 
 .p_delChat{
-    font-size: 28px;
+    font-size: 26px;
     padding-right: 10px;
     padding-left: 10px;
     margin: 13px;
+}
+
+.contenedorDel_Chat:active{
+    background-color: rgba(59, 53, 145, 0.329);
+    width: 169px;
 }

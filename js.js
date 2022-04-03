@@ -10,6 +10,12 @@ let embrionDeDeidad = false;
 let embrionDeSerTrancendete = false;
 let visitaDeAliens = false;
 
+let plumaNegra = false;
+let arco1 = false;
+let fuerza1 = 0;
+let llave1 = false;
+
+let player = false;
 
 /*Economia*/
 
@@ -34,6 +40,7 @@ nombreDeTuMundo1.innerHTML = nombreDeTuMundo0;
 
 if (nombreDeTuMundo0 == "Tatitos Gorditos"){
     monedas = monedas + 1000;
+    puntosDeAdn = puntosDeAdn + 2001;
     moneda.innerHTML = monedas;
     llaveDelCofre = llaveDelCofre + 10;
     alert(`/gamemode creative`)
@@ -169,9 +176,19 @@ let adn2 = document.getElementById("adn");
 adn2.addEventListener("click",mostrarAdn);
 
 function mostrarAdn(){
-    alert(`Tienes un total de ${puntosDeAdn} puntos de Adn`);
-}
+    if(puntosDeAdn >= 2000 && player == false){
+        let nombreDeTuPersonaje = prompt("Como se llamará tu personaje?");
+        alert(`${nombreDeTuPersonaje} pudo encarnar su alma en las tierras de ${nombreDeTuMundo0}. De ahora en adelante se forjara tu camino.`)
 
+        puntosDeAdn = puntosDeAdn - 2000;
+        player = true
+} else if(puntosDeAdn <= 1999 && player == false){
+    alert(`Tienes un total de ${puntosDeAdn} puntos de Adn, y necesitas 2000 para que nazca tu personaje`);
+} else{
+    alert("Ya puedes ingresar a las estadisticas de tu personaje");
+    let estadisticas = true;
+}
+}
 /*Tienda*/
 
 let modal_1 = document.querySelector(".modal_padre_tienda");
@@ -189,6 +206,64 @@ function abrirTienda(){
 
 function cerrarTienda(){
     modal_1.classList.remove("modal--show_1");
+}
+
+
+/* Comprar cofres */
+/* Madera */
+
+let statsDeCofreDeMadera = document.querySelector(".AAA");
+let fontsizeDelP = document.querySelector(".a1px");
+let botonBuild = document.querySelector(".comprarCofreDeMadera1");
+
+let cofreDeMadera = document.getElementById("itemMadera");
+cofreDeMadera.addEventListener("click",mostrarDatosDelItem);
+
+function mostrarDatosDelItem(){
+    if(cofreDeMadera.classList.contains("itemDeLaTienda_madera")){
+        cofreDeMadera.classList.remove("itemDeLaTienda_madera");
+        statsDeCofreDeMadera.classList.remove("EstatsDelCofreDeMadera");
+        fontsizeDelP.classList.remove("a2px");
+        botonBuild.classList.remove("comprarCofreDeMadera");
+    }  else{
+        cofreDeMadera.classList.add("itemDeLaTienda_madera");
+        statsDeCofreDeMadera.classList.add("EstatsDelCofreDeMadera");
+        fontsizeDelP.classList.add("a2px");
+        botonBuild.classList.add("comprarCofreDeMadera");
+    }
+}
+
+botonBuild.addEventListener("click",comprarCofreDeMadera);
+
+function comprarCofreDeMadera(){
+    if(monedas >= 25 && player == true){
+
+        monedas = monedas - 25;
+        moneda.innerHTML = monedas;
+
+        let numeroRandom1 = Math.random()*3;
+            numeroRandom1 = Math.floor(numeroRandom1);
+            numeroRandom1 = numeroRandom1 + 1;
+
+            if(numeroRandom1 == 1 && plumaNegra == false){
+                plumaNegra = true;
+                alert(`Felicitaciones! Haz conseguido "Pluma Negra"`);
+            } else if(numeroRandom1 == 2 && arco1 == false){
+                arco1 = true;
+                alert(`Felicitaciones! Haz conseguido "Arco de madera"`);
+            } else if(numeroRandom1 == 3 && llave1 == false){
+                llave1 = true;
+                alert(`Felicitaciones! Haz conseguido "Llave de metal"`);
+            } else {
+                fuerza1 = fuerza1 + 1;
+                alert(`Felicitaciones! Haz aumentado tu fuerza en 1 punto`);
+            }
+
+    } else if(monedas >= 25 && player == false){
+        alert(`Primero debes crear tu personaje!`);
+    } else{
+        alert(`Fondos insuficientes, faltan ${25 - monedas} Infinite coins`);
+    }
 }
 
 /*LOGROS*/
@@ -306,8 +381,3 @@ function playAndMutedSong(){
         mute = true;
     }
 }
-
-
-
-/**/
-
