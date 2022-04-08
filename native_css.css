@@ -1,0 +1,148 @@
+*{
+    font-family:'Rubik',Impact;
+}
+
+.body{
+    background: linear-gradient(90deg, rgba(165,255,228,1) 0%, rgba(176,246,242,1) 42%, rgba(168,217,255,1) 100%);
+    width: 360px;
+    height: 651px;
+}
+
+/* Nav */
+
+.nav{
+    display: grid;
+    grid-template-columns: auto 47% auto auto;
+    background: linear-gradient(90deg, rgba(172,165,255,1) 24%, rgba(241,176,246,0.9948354341736695) 50%, rgba(164,114,195,1) 100%);
+    color: rgb(1, 0, 14);
+    border: 1px solid black;
+    box-shadow: 1px 1px 0px rgb(76, 76, 117);
+    border-radius: 3px;
+}
+
+/* Los Divs del Nav, que contienen las monedas con su balance, la tienda y los logros */
+
+.gridItemDelNav{
+    text-align: center;
+    color: rgb(76, 76, 117);
+}
+
+/* Monedas, Tienda, Logros, Inventario(bag), Imagen de los eventos, Cofre diario, */
+
+.icono{
+    width: 40px;
+    height: 40px;
+    padding-top: 5%;
+}
+
+.tiendaIcono{
+    width: 45px;
+    height: 45px; 
+}
+
+/* El numero de las monedas */
+
+.balance{
+    padding-right: 90%;
+    color: rgb(92, 75, 0);
+    font-family: Impact;
+}
+
+/* Contiene todo desde el Nav para abajo (No incluye el Nav) */
+
+.contenedorDelMein{
+    display: grid;
+    grid-template-rows: 25% 47% auto auto;
+    text-align: end;
+    color: rgb(1, 0, 14);
+    height: 565px;
+    padding-top: 10px;
+}
+
+/* Inventario */
+
+.contenedorDelInventario{
+    padding-right: 250px;
+    padding-top: 0px;
+}
+
+.bag{
+    width: 50px;
+    height: 50px;
+}
+
+/* Div que contiene el icono del Adn */
+
+.contenedorDelAdn{
+    display: grid;
+    grid-template-columns: 85% 15%;
+}
+
+.Adn{
+    width: 45px;
+    height: 45px; 
+    animation-name: palpitar;
+    animation-duration: 0.9s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes palpitar{
+    0% {}
+    50% { width: 47px; height: auto;}
+    100% {}
+}
+
+.nombreDeTuMundo{
+    font-family:'Permanent Marker', impact;
+    color: #120855;
+}
+
+/* Imagen de los eventos */
+
+.vidaImg{
+    width: 100px;
+    height: 100px;
+    /*animation-name: exploracion_rebota;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;*/
+}
+
+@keyframes exploracion_rebota{
+  25%{transform: rotate(4deg);}
+  50%{transform: rotate(-4deg);}
+  75%{transform: rotate(4deg);}
+  100%{transform: rotate(0deg);}
+}
+
+.cofreDiario{
+    width: 60px;
+    height: 60px;
+}
+
+.contadorParaElCofreDiario{
+    margin-top: -5px;
+}
+
+/* Dvis que estan dentro del main contienen cosas */
+
+.gridItems2{
+    text-align: center;
+}
+
+.gridItem2_1{
+    margin: auto;
+}
+
+.gridItem2_2{
+    display: grid;
+    margin: auto;
+    margin-bottom: -20px;
+    margin-left: 40%;
+}
+
+/* SoundTrack */
+
+.contenedorDelSoundtrack{
+    padding-left: 280%;
+    padding-top: 20px;
+}

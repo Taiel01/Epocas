@@ -9,7 +9,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Island+Moments&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="native_css.css">
     <link rel="stylesheet" href="style.css">
+
 
 </head>
 
@@ -48,17 +50,45 @@
 
     <section class="modal_padre_inventario">
         <div class="modal_cuerpo_inventario">
-            
+            <div class="gridParaElInventario">
+                <img src="iconos/Tienda/correo.png" class="itemDelInventario itemDelInventario_1">
+                <img src="iconos/Tienda/pluma1.png" class="itemDelInventario itemDelInventario_2">
+                <img src="iconos/Tienda/arco1.png" class="itemDelInventario itemDelInventario_3">
+                <img src="iconos/Tienda/pico_primitivo.png" class="itemDelInventario itemDelInventario_4">
+            </div>
             <div class="divParaElCloseDelInventario">
 
                 <a href="#" class="boton_close_inventario">Close</a>
 
             </div>
         </div>
+    </section>
+
+    <!-- Modal para el Player-->
+    <section class="modal_padre_player">
+    <div class="modal_cuerpo_player">
+        <div class="gridParaElHudDePlayer">
+
+            <a href="index_mina.html" class="mina_no_href"><img src="iconos/characters/mina.png" class="mina"></a>
+            <img src="iconos/characters/chico.png" class="characters personaje_chico">
+            <img src="iconos/characters/chica.png" class="characters personaje_chica">
+
+            <div class="infoDelPlayer">
+                <p class="infoDelPlayer_texto">
+                    Nivel:<a class="nivelDelPlayer">0</a><br>
+                    Salud: <a class="saludDelPlayer">0</a><br>
+                    Fuerza: <a class="fuerzaDelPlayer">0</a><br>
+                    Intelecto: <a class="intelectoDelPlayer">0</a><br>
+                </p>
+        </div>
+        <div class="divParaElCloseDePlayer">
+            <a href="#" class="boton_close_player">Close</a>
+        </div>
+    </div>
+    </section>
 
     <!-- Modal de la tienda -->
 
-    </section>
     <section class="modal_padre_tienda">
         <div class="modal_cuerpo_tienda">
           <div class="divPadreDeLosItemsDeLaTienda">
@@ -165,7 +195,8 @@
 
     <!-- Script del JS -->
 
-        <script src="js.js"></script>
+    <script src="js.js"></script>
+        
 
     </div>
 </body>

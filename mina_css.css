@@ -1,0 +1,31 @@
+*{
+    font-family:'Rubik',Impact;
+}
+
+.body{
+    background: linear-gradient(90deg, rgb(94 62 3) 0%, rgb(88 61 20) 42%, rgb(84 50 26) 100%);
+    width: 360px;
+    height: 651px;
+    
+}
+
+.divDeVolver{
+    font-size: 20px;
+    padding: 6px;
+    margin-left: -6px;
+    color: #efefef;
+    background-color: brown;
+    text-decoration: none;
+}
+
+.mineral{
+    width: 248px;
+    padding: 50px;
+    margin-top: 138px;
+}
+
+.mineral:active {
+    width: 244px;
+    transition: width 0.4s;
+}
+

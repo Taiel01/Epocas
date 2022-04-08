@@ -1,151 +1,195 @@
-*{
-    font-family:'Rubik',Impact;
+/* Modal para el hud de Player*/
+
+.modal_padre_player{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #120855bb;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s;
+    --transform: translateY(-100vh);
+    --transition: --transform .8s;
 }
 
-.body{
-    background: linear-gradient(90deg, rgba(165,255,228,1) 0%, rgba(176,246,242,1) 42%, rgba(168,217,255,1) 100%);
-    width: 360px;
-    height: 651px;
+.modal_cuerpo_player{
+    margin: 35px;
+    width: 90%;
+    max-width: 300px;
+    max-height: 507px;
+    border-radius: 16px;
+    border: 5px solid #d3ad90;
+    background: radial-gradient(circle, rgb(255, 119, 171) 0%, rgb(255 255 255) 100%);
+    place-items: center;
+    transform: var(--transform);
+    transition: transform .3s;
+    overflow: auto;
 }
 
-/* Nav */
 
-.nav{
+.gridParaElHudDePlayer{
     display: grid;
-    grid-template-columns: auto 47% auto auto;
-    background: linear-gradient(90deg, rgba(172,165,255,1) 24%, rgba(241,176,246,0.9948354341736695) 50%, rgba(164,114,195,1) 100%);
-    color: rgb(1, 0, 14);
-    border: 1px solid black;
-    box-shadow: 1px 1px 0px rgb(76, 76, 117);
-    border-radius: 3px;
-}
-
-/* Los Divs del Nav, que contienen las monedas con su balance, la tienda y los logros */
-
-.gridItemDelNav{
-    text-align: center;
-    color: rgb(76, 76, 117);
-}
-
-/* Monedas, Tienda, Logros, Inventario(bag), Imagen de los eventos, Cofre diario, */
-
-.icono{
-    width: 40px;
-    height: 40px;
-    padding-top: 5%;
-}
-
-.tiendaIcono{
-    width: 45px;
-    height: 45px; 
-}
-
-/* El numero de las monedas */
-
-.balance{
-    padding-right: 90%;
-    color: rgb(92, 75, 0);
-    font-family: Impact;
-}
-
-/* Contiene todo desde el Nav para abajo (No incluye el Nav) */
-
-.contenedorDelMein{
-    display: grid;
-    grid-template-rows: 25% 47% auto auto;
-    text-align: end;
-    color: rgb(1, 0, 14);
-    height: 565px;
-    padding-top: 10px;
-}
-
-/* Inventario */
-
-.contenedorDelInventario{
-    padding-right: 250px;
-    padding-top: 0px;
-}
-
-.bag{
-    width: 50px;
-    height: 50px;
-}
-
-/* Div que contiene el icono del Adn */
-
-.contenedorDelAdn{
-    display: grid;
-    grid-template-columns: 85% 15%;
-}
-
-.Adn{
-    width: 45px;
-    height: 45px; 
-    animation-name: palpitar;
-    animation-duration: 0.9s;
-    animation-iteration-count: infinite;
-}
-
-@keyframes palpitar{
-    0% {}
-    50% { width: 47px; height: auto;}
-    100% {}
-}
-
-.nombreDeTuMundo{
-    font-family:'Permanent Marker', impact;
-    color: #120855;
-}
-
-/* Imagen de los eventos */
-
-.vidaImg{
-    width: 100px;
-    height: 100px;
-    /*animation-name: exploracion_rebota;
-    animation-duration: 3s;
-    animation-iteration-count: infinite;*/
-}
-
-@keyframes exploracion_rebota{
-  25%{transform: rotate(4deg);}
-  50%{transform: rotate(-4deg);}
-  75%{transform: rotate(4deg);}
-  100%{transform: rotate(0deg);}
-}
-
-.cofreDiario{
-    width: 60px;
-    height: 60px;
-}
-
-.contadorParaElCofreDiario{
-    margin-top: -5px;
-}
-
-/* Dvis que estan dentro del main contienen cosas */
-
-.gridItems2{
-    text-align: center;
-}
-
-.gridItem2_1{
-    margin: auto;
-}
-
-.gridItem2_2{
-    display: grid;
-    margin: auto;
-    margin-bottom: -20px;
-    margin-left: 40%;
-}
-
-/* SoundTrack */
-
-.contenedorDelSoundtrack{
-    padding-left: 280%;
+    padding-left: 37px;
     padding-top: 20px;
 }
+
+
+.modal--show_player{
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .6s;
+    --transform: translateY(0);
+}
+
+.divParaElCloseDeLaTienda{
+    margin-left: 73px;
+}
+
+
+
+
+
+
+/* Elegir personajes */
+
+.mina{
+    width: 0px;
+    height: 0px;
+    margin-left: 232px;
+}
+
+.mina_no_href{
+    pointer-events: none;
+}
+
+.mina_si_href{
+    pointer-events: unset;
+}
+
+.mina_si{
+    width: 63px;
+    height: 63px;
+    margin-left: 193px;
+    margin-top: -22px;
+    transition: width 1s;
+}
+
+.personaje_chico{
+    width: 100px;
+    height: 100px;
+    opacity: 0;
+    border: 2px solid #7e3a14;
+    padding: 3px;
+    border-radius: 8px;
+    background: #fff6ed;
+    box-shadow: 0px 4px 5px -1px #81553f7a;
+}
+
+.personaje_chica{
+    width: 100px;
+    height: 100px;
+    margin-left: 132px;
+    margin-top: -85px;
+    position: relative;
+    opacity: 0;
+}
+
+.characters{
+    width: 75px;
+    height: 75px;
+    opacity: 1;
+    border: 2px solid #7e3a14;
+    padding: 3px;
+    border-radius: 8px;
+    background: #fff6ed;
+    box-shadow: 0px 4px 5px -1px #81553f7a;
+}
+
+.eligio_chica{
+    margin-left: 75px;
+    margin-top: -55px;
+    transition: margin-left 1s;
+}
+
+.eligio_chico{
+    margin-left: 71px;
+    margin-top: -53px;
+    transition: margin-left 1s;
+}
+
+.character_no{
+    opacity: 0;
+    pointer-events: none;
+    margin-top: -216px;
+}
+
+.infoDelPlayer_texto{
+    font-size: 0px;
+}
+
+.infoDelPlayer_si{
+    box-shadow: 1px 1px 6px 1px #fbf0cd;
+    border-radius: 9px;
+    border: 2px solid #ffba00;
+    margin-right: 33px;
+    padding-bottom: 115px;
+    margin-top: 18px;
+    background: #ffffff63;
+}
+
+.infoDelPlayer_texto_si{
+    font-size: 20px;
+    color: #442907;
+    padding-left: 7px;
+    margin: 9px;
+}
+
+.boton_close_player{
+    text-decoration: none;
+    color: #120855;
+    padding: 5px 15px;
+    border: 1px solid;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 300;
+    box-shadow: 2px 1px;
+    margin-top: 317px;
+    margin-left: 68px;
+}
+
+.boton_close_player_si{
+    text-decoration: none;
+    color: #120855;
+    padding: 5px 15px;
+    border: 1px solid;
+    border-radius: 6px;
+    display: inline-block;
+    font-weight: 300;
+    box-shadow: 2px 1px;
+    margin-left: 72px;
+    margin-top: 101px;
+}
+
+.divDelNivelDelPlayer{
+    box-shadow: 1px 1px 6px 1px #fbf0cd;
+    border-radius: 9px;
+    height: 30px;
+    width: 61px;
+    border: 2px solid #ffba00;
+}
+
+.nivelDelPlayer{
+    margin-left: 23px;
+    margin-top: 7px;
+}
+
+
+
+
+
 
 
 /* MODAL de la tienda*/
@@ -202,6 +246,7 @@
 .divParaElCloseDeLaTienda{
     margin-left: 73px;
 }
+
 /* Cofres de la tienda */
 
 .divPadreDeLosItemsDeLaTienda{
@@ -262,6 +307,12 @@
     height: 75px;
 }
 
+
+
+
+
+
+
 /*Inventario*/
 
 .modal_padre_inventario{
@@ -287,10 +338,7 @@
     border-radius: 16px;
     border: 5px solid #d3ad90;
     background: radial-gradient(circle, rgb(255 195 133) 0%, rgb(255 255 255) 100%);
-    display: grid;
-    grid-template-columns: 27% 27% 27%;
     place-items: center;
-    grid-auto-columns: 100%;
     transform: var(--transform);
     transition: transform .3s;
     overflow: auto;
@@ -308,8 +356,32 @@
     margin-left: 207px;
 }
 
+.gridParaElInventario{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-auto-rows: 106px;
+    padding-left: 14px;
+    padding-top: 20px;
+}
+
+.itemDelInventario{
+    width: 75px;
+    height: 75px;
+    opacity: 0;
+    border: 2px solid #7e3a14;
+    padding: 3px;
+    border-radius: 8px;
+    background: #fff6ed;
+    box-shadow: 0px 4px 5px -1px #81553f7a;
+}
+
+.itemDelInventario_mostrar{
+    opacity: 1;
+}
+
 .divParaElCloseDelInventario{
-    padding-top: 395px;
+    padding-top: 363px;
+    margin-left: -96px;
 }
 
 .modal--show{
@@ -320,6 +392,12 @@
 }
 
 /* Items en el inventario */
+
+
+
+
+
+
 
 
 

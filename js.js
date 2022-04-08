@@ -14,8 +14,17 @@ let plumaNegra = false;
 let arco1 = false;
 let fuerza1 = 0;
 let llave1 = false;
+let pico_primitivo = false;
+
+let correo = false;
 
 let player = false;
+
+let fuerza_inner = document.getElementsByClassName(".fuerzaDelPlayer");
+
+/* Habilidades */
+
+let puede_minar = false;
 
 /*Economia*/
 
@@ -171,6 +180,7 @@ nuevoEvento(evento50,"vida11.10.png",635000,1,20);
 nuevoEvento(evento51,"vida11.11.png",650000,1,250);
 
 /*Saber cuantos puntos de ADN tenes*/
+let estadisticas = false;
 
 let adn2 = document.getElementById("adn");
 adn2.addEventListener("click",mostrarAdn);
@@ -185,10 +195,83 @@ function mostrarAdn(){
 } else if(puntosDeAdn <= 1999 && player == false){
     alert(`Tienes un total de ${puntosDeAdn} puntos de Adn, y necesitas 2000 para que nazca tu personaje`);
 } else{
-    alert("Ya puedes ingresar a las estadisticas de tu personaje");
-    let estadisticas = true;
+    estadisticas = true;
 }
 }
+
+/*Player hud*/
+
+let modal_player = document.querySelector(".modal_padre_player");
+
+let closeModal_player = document.querySelector(".boton_close_player");
+
+closeModal_player.addEventListener("click",cerrarEstadisticass);
+
+let estadistica = document.querySelector(".Adn");
+estadistica.addEventListener("click",abrirEstadisticas);
+
+function abrirEstadisticas(){
+    if(estadisticas == true){
+    modal_player.classList.add("modal--show_player");
+}else{}
+}
+
+function cerrarEstadisticass(){
+    modal_player.classList.remove("modal--show_player");
+}
+
+/* Elejir personaje */
+
+let mostrarInfoDelPlayer = document.querySelector(".infoDelPlayer");
+let mostrarInfoDelPlayer_texto = document.querySelector(".infoDelPlayer_texto");
+let botonClosePlayerSi = document.querySelector(".boton_close_player");
+let mina = document.querySelector(".mina");
+
+let personaje_chico = document.querySelector(".personaje_chico");
+personaje_chico.addEventListener("click",elejirChico);
+
+let personaje_chica = document.querySelector(".personaje_chica");
+personaje_chica.addEventListener("click",elejirChica);
+
+function elejirChica(){
+    personaje_chica.classList.add("eligio_chica");
+    personaje_chico.classList.remove("characters");
+    personaje_chico.classList.add("character_no");
+    mostrarInfoDelPlayer.classList.add("infoDelPlayer_si");
+    mostrarInfoDelPlayer_texto.classList.add("infoDelPlayer_texto_si");
+    botonClosePlayerSi.classList.add("boton_close_player_si");
+    mina.classList.add("mina_si");
+}
+
+function elejirChico(){
+    personaje_chico.classList.add("eligio_chico");
+    personaje_chica.classList.remove("characters");
+    personaje_chica.classList.add("character_no");
+    mostrarInfoDelPlayer.classList.add("infoDelPlayer_si");
+    mostrarInfoDelPlayer_texto.classList.add("infoDelPlayer_texto_si");
+    botonClosePlayerSi.classList.add("boton_close_player_si");
+    mina.classList.add("mina_si");
+}
+
+/* IR A LA MINA */
+
+let entrada_a_la_mina = document.querySelector(".mina");
+entrada_a_la_mina.addEventListener("click",entrar_a_la_mina);
+
+let puede_entrar_a_la_mina = document.querySelector(".mina_no_href");
+
+
+function entrar_a_la_mina(){
+    if(puede_minar == true){
+        puede_entrar_a_la_mina.classList.add("mina_si_href");
+    }
+}
+
+
+
+
+
+
 /*Tienda*/
 
 let modal_1 = document.querySelector(".modal_padre_tienda");
@@ -212,6 +295,13 @@ function cerrarTienda(){
 /* Comprar cofres */
 /* Madera */
 
+
+
+let itemDeLaPluma = document.querySelector(".itemDelInventario_2");
+let itemDelArco = document.querySelector(".itemDelInventario_3");
+let itemDePicoPrimitivo = document.querySelector(".itemDelInventario_4");
+
+
 let statsDeCofreDeMadera = document.querySelector(".AAA");
 let fontsizeDelP = document.querySelector(".a1px");
 let botonBuild = document.querySelector(".comprarCofreDeMadera1");
@@ -225,6 +315,7 @@ function mostrarDatosDelItem(){
         statsDeCofreDeMadera.classList.remove("EstatsDelCofreDeMadera");
         fontsizeDelP.classList.remove("a2px");
         botonBuild.classList.remove("comprarCofreDeMadera");
+
     }  else{
         cofreDeMadera.classList.add("itemDeLaTienda_madera");
         statsDeCofreDeMadera.classList.add("EstatsDelCofreDeMadera");
@@ -241,21 +332,35 @@ function comprarCofreDeMadera(){
         monedas = monedas - 25;
         moneda.innerHTML = monedas;
 
-        let numeroRandom1 = Math.random()*3;
+        let numeroRandom1 = Math.random()*4;
             numeroRandom1 = Math.floor(numeroRandom1);
             numeroRandom1 = numeroRandom1 + 1;
 
             if(numeroRandom1 == 1 && plumaNegra == false){
                 plumaNegra = true;
                 alert(`Felicitaciones! Haz conseguido "Pluma Negra"`);
+                itemDeLaPluma.classList.add("itemDelInventario_mostrar");
+
             } else if(numeroRandom1 == 2 && arco1 == false){
                 arco1 = true;
+                itemDelArco.classList.add("itemDelInventario_mostrar");
+
                 alert(`Felicitaciones! Haz conseguido "Arco de madera"`);
+
             } else if(numeroRandom1 == 3 && llave1 == false){
                 llave1 = true;
                 alert(`Felicitaciones! Haz conseguido "Llave de metal"`);
-            } else {
+
+            } else if(numeroRandom1 == 4 && pico_primitivo == false){
+                pico_primitivo = true;
+                puede_minar = true;
+                puede_entrar_a_la_mina.classList.add("mina_si_href");
+                itemDePicoPrimitivo.classList.add("itemDelInventario_mostrar");
+
+                alert(`Felicitaciones! Haz conseguido "Pico primitivo"`);
+            }else {
                 fuerza1 = fuerza1 + 1;
+                fuerza_inner.innerHTML = fuerza1;
                 alert(`Felicitaciones! Haz aumentado tu fuerza en 1 punto`);
             }
 
@@ -266,7 +371,7 @@ function comprarCofreDeMadera(){
     }
 }
 
-/*LOGROS*/
+/*LOGROS (Que en realidad es Setings)*/
 
 let modal_2 = document.querySelector(".modal_padre_logros");
 
@@ -287,12 +392,17 @@ function cerrarLogros(){
 
 /*Inventario*/
 
+let itemDelCorreo = document.querySelector(".itemDelInventario_1");
+
 let modal = document.querySelector(".modal_padre_inventario");
 
 let bag = document.querySelector(".bag");
 bag.addEventListener("click",abrirInventario);
 
 function abrirInventario(){
+    if(correo == true){
+        itemDelCorreo.classList.add("itemDelInventario_mostrar");
+    }
     modal.classList.add("modal--show");
 }
 
@@ -328,7 +438,7 @@ function Temporizador(){
 
     if (segundoInicio == 0){
         alert("Ya puedes abrir tu cofre!");
-        segundoInicio = segundoInicio +9999;
+        segundoInicio = segundoInicio +5399;
         llaveDelCofre = llaveDelCofre +1;
     } else{
         segundoInicio = segundoInicio -1;
@@ -357,11 +467,7 @@ Temporizador();
 Temporizador();
 Temporizador();
 Temporizador();
-Temporizador();
-Temporizador();
-Temporizador();
-Temporizador();
-Temporizador();
+
 
 /*SoundTrack*/
 
