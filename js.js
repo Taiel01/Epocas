@@ -2,25 +2,40 @@
 
 /*Inventario*/
 
-let superSemilla = false;
-let superADN = false;
-let embrionDeGenio = false;
-let embrionDeMago = false;
-let embrionDeDeidad = false;
-let embrionDeSerTrancendete = false;
-let visitaDeAliens = false;
 
 let plumaNegra = false;
 let arco1 = false;
-let fuerza1 = 0;
 let llave1 = false;
 let pico_primitivo = false;
+let espada_daily = false;
 
 let correo = false;
 
 let player = false;
 
-let fuerza_inner = document.getElementsByClassName(".fuerzaDelPlayer");
+/* Puntos de habilidades */
+
+
+
+let nivel = 1;
+let nivel_inner = document.querySelector(".nivelDelPlayer");
+nivel_inner.innerHTML = nivel;
+
+
+let salud = 100;
+let salud_inner = document.querySelector(".saludDelPlayer");
+salud_inner.innerHTML = salud;
+
+
+let intelecto = 1;
+let intelecto_inner = document.querySelector(".intelectoDelPlayer");
+intelecto_inner.innerHTML = intelecto;
+
+
+
+let fuerza1 = 1;
+let fuerza_inner = document.querySelector(".fuerzaDelPlayer");
+fuerza_inner.innerHTML = fuerza1;
 
 /* Habilidades */
 
@@ -39,11 +54,23 @@ let llaveDelCofre = 0;
 let moneda = document.getElementById("infiniteCoin"); 
 moneda.innerHTML = monedas;
 
+
+
+
+
 /* Creacion del "nombre" del ecosistema */
+
+let nombreDeTuMundo0 = localStorage.getItem("nombre_del_mundo");
+
+for (let index = 0; nombreDeTuMundo0 == null || nombreDeTuMundo0 == "" || nombreDeTuMundo0.length < 3 || nombreDeTuMundo0.length > 20 ;) {
+
+        nombreDeTuMundo0 = prompt("Como se llamará tu mundo?");
+      
+}
 
 let nombreDeTuMundo = document.getElementById("nombreDeTuMundo1");
 
-let nombreDeTuMundo0 = prompt("Como se llamará tu mundo?");
+localStorage.setItem("nombre_del_mundo",nombreDeTuMundo0);
 
 nombreDeTuMundo1.innerHTML = nombreDeTuMundo0;
 
@@ -52,7 +79,6 @@ if (nombreDeTuMundo0 == "Tatitos Gorditos"){
     puntosDeAdn = puntosDeAdn + 2001;
     moneda.innerHTML = monedas;
     llaveDelCofre = llaveDelCofre + 10;
-    alert(`/gamemode creative`)
 } else{
     alert(`Felicitaciones! tu pequeño ecosistema "${nombreDeTuMundo0}" se a creado con exito! Toma las mejores deciciones posibles para no destruirlo, mucha suerte!`)
     monedas = monedas + 0;
@@ -187,7 +213,15 @@ adn2.addEventListener("click",mostrarAdn);
 
 function mostrarAdn(){
     if(puntosDeAdn >= 2000 && player == false){
+
         let nombreDeTuPersonaje = prompt("Como se llamará tu personaje?");
+
+        for (let index_1 = 0; nombreDeTuPersonaje == null || nombreDeTuPersonaje == "" || nombreDeTuPersonaje.length < 3 || nombreDeTuPersonaje.length > 9 ;) {
+
+            nombreDeTuPersonaje = prompt("Como se llamará tu personaje?");
+          
+    }
+
         alert(`${nombreDeTuPersonaje} pudo encarnar su alma en las tierras de ${nombreDeTuMundo0}. De ahora en adelante se forjara tu camino.`)
 
         puntosDeAdn = puntosDeAdn - 2000;
@@ -241,6 +275,8 @@ function elejirChica(){
     mostrarInfoDelPlayer_texto.classList.add("infoDelPlayer_texto_si");
     botonClosePlayerSi.classList.add("boton_close_player_si");
     mina.classList.add("mina_si");
+    intelecto = intelecto + 5;
+    intelecto_inner.innerHTML = intelecto;
 }
 
 function elejirChico(){
@@ -251,6 +287,8 @@ function elejirChico(){
     mostrarInfoDelPlayer_texto.classList.add("infoDelPlayer_texto_si");
     botonClosePlayerSi.classList.add("boton_close_player_si");
     mina.classList.add("mina_si");
+    fuerza1 = fuerza1 + 5;
+    fuerza_inner.innerHTML = fuerza1;
 }
 
 /* IR A LA MINA */
@@ -338,14 +376,22 @@ function comprarCofreDeMadera(){
 
             if(numeroRandom1 == 1 && plumaNegra == false){
                 plumaNegra = true;
-                alert(`Felicitaciones! Haz conseguido "Pluma Negra"`);
+                alert(`Felicitaciones! Haz conseguido "Pluma Negra", aumenta tu salud y tu fuerza!`);
                 itemDeLaPluma.classList.add("itemDelInventario_mostrar");
+                salud = salud + 10;
+                fuerza1 = fuerza1 + 2;
+                salud_inner.innerHTML = salud;
+                fuerza_inner.innerHTML = fuerza1;
 
             } else if(numeroRandom1 == 2 && arco1 == false){
                 arco1 = true;
                 itemDelArco.classList.add("itemDelInventario_mostrar");
 
-                alert(`Felicitaciones! Haz conseguido "Arco de madera"`);
+                alert(`Felicitaciones! Haz conseguido "Arco de madera", tu nivel y tu intelecto`);
+                nivel = nivel + 1;
+                intelecto = intelecto + 2;
+                nivel_inner.innerHTML = nivel;
+                intelecto_inner.innerHTML = intelecto;
 
             } else if(numeroRandom1 == 3 && llave1 == false){
                 llave1 = true;
@@ -357,7 +403,7 @@ function comprarCofreDeMadera(){
                 puede_entrar_a_la_mina.classList.add("mina_si_href");
                 itemDePicoPrimitivo.classList.add("itemDelInventario_mostrar");
 
-                alert(`Felicitaciones! Haz conseguido "Pico primitivo"`);
+                alert(`Felicitaciones! Haz conseguido "Pico primitivo", Ahora puedes minar!`);
             }else {
                 fuerza1 = fuerza1 + 1;
                 fuerza_inner.innerHTML = fuerza1;
@@ -392,6 +438,12 @@ function cerrarLogros(){
 
 /*Inventario*/
 
+let brazalete_nordico_inner = document.querySelector(".itemDelInventario_8"); 
+let pendiente_de_zafiro_inner = document.querySelector(".itemDelInventario_7");
+let collar_de_tiburon_inner = document.querySelector(".itemDelInventario_5");
+let lujo_del_rey_inner = document.querySelector(".itemDelInventario_6");
+
+
 let itemDelCorreo = document.querySelector(".itemDelInventario_1");
 
 let modal = document.querySelector(".modal_padre_inventario");
@@ -404,6 +456,43 @@ function abrirInventario(){
         itemDelCorreo.classList.add("itemDelInventario_mostrar");
     }
     modal.classList.add("modal--show");
+
+    let brazalete_nordico = localStorage.getItem("item_brazalete");
+    let pendiente_de_zafiro = localStorage.getItem("item_pendiente");
+    let collar_de_tiburon = localStorage.getItem("item_collar_tiburon");
+    let lujo_delRey = localStorage.getItem("item_lujo_rey");
+
+
+    if(brazalete_nordico == "1"){
+        brazalete_nordico_inner.classList.add("itemDelInventario_mostrar")
+        fuerza1 = fuerza1 + 20;
+        salud = salud + 5;
+        nivel = nivel + 5;
+        intelecto = intelecto + 5;
+    } else{}
+
+    if(pendiente_de_zafiro == "1"){
+        pendiente_de_zafiro_inner.classList.add("itemDelInventario_mostrar")
+        salud = salud + 10;
+        nivel = nivel + 5;
+        intelecto = intelecto + 10;
+    } else{}
+
+    if(collar_de_tiburon == "1"){
+        collar_de_tiburon_inner.classList.add("itemDelInventario_mostrar")
+        salud = salud + 25;
+        nivel = nivel + 5;
+        intelecto = intelecto + 5;
+    } else{}
+
+    
+    if(lujo_delRey == "1"){
+        lujo_del_rey_inner.classList.add("itemDelInventario_mostrar")
+        salud = salud + 15;
+        nivel = nivel + 10;
+        intelecto = intelecto + 5;
+        fuerza1 = fuerza1 + 5;
+    } else{}
 }
 
 
@@ -418,15 +507,30 @@ function cerrarInventario(){
 /*Rewards of the Daily chest*/
 
 function OpenDailyChest(){
-    let numeroRandom = Math.random()*60;
+    let numeroRandom = Math.random()*100;
     numeroRandom = Math.floor(numeroRandom);
     numeroRandom = numeroRandom + 1;
 
-    alert(`Felicitaciones ganaste ${numeroRandom} Infinite coins!`);
+    if (numeroRandom == 99){
+        espada_daily = true;
+        espada_daily_inner = document.querySelector(".itemDelInventario_9")
+        espada_daily_inner.classList.add("itemDelInventario_mostrar")
+        alert(`Felicitaciones conseguiste "Espada de acero" con una probabilidad del 1%!`);
+    } else if(numeroRandom >= 70){
 
-    monedas = monedas + numeroRandom;
+        alert(`Felicitaciones ganaste ${numeroRandom - 15} Infinite coins!`);
 
-    moneda.innerHTML = monedas;
+        monedas = monedas + numeroRandom - 15;
+    
+        moneda.innerHTML = monedas;
+
+    } else{
+        alert(`Felicitaciones ganaste ${numeroRandom} Infinite coins!`);
+
+        monedas = monedas + numeroRandom;
+    
+        moneda.innerHTML = monedas;
+    }
 }
 
 /*Funcion del CountDown del Daily chest*/
@@ -486,4 +590,66 @@ function playAndMutedSong(){
         playSoundtrack.pause();
         mute = true;
     }
+}
+
+
+
+/* Local Storage*/
+
+
+/* Guardar */
+
+let boton_de_guardar = document.querySelector(".contenedorDel_Guardar");
+
+boton_de_guardar.addEventListener("click",guardar_la_partida);
+
+function guardar_la_partida(){
+
+ if(monedas == 0){
+
+ } else{
+    let monedas_de_la_mina = localStorage.getItem("dineroDeLaMina");
+    
+    monedas = monedas + Number(monedas_de_la_mina);
+
+    monedas_de_la_mina = 0;
+
+    localStorage.setItem("dineroDeLaMina",monedas_de_la_mina);
+
+    
+    localStorage.setItem("monedas_guardadas", monedas);
+    
+
+    monedas = 0;
+    moneda.innerHTML = monedas;
+ }
+    
+}
+
+
+
+/* Cargar */
+
+let boton_de_cargar = document.querySelector(".contenedorDel_Cargar");
+
+boton_de_cargar.addEventListener("click",cargar_la_partida);
+
+function cargar_la_partida(){
+
+let monedas_cargadas = localStorage.getItem("monedas_guardadas", monedas);
+
+ if(monedas_cargadas == "0"){
+
+ } else {
+
+    let cargar_tus_monedas = localStorage.getItem("monedas_guardadas")
+
+    monedas = Number(cargar_tus_monedas);
+
+    moneda.innerHTML = monedas;
+
+    cargar_tus_monedas = 0;
+
+    localStorage.setItem("monedas_guardadas", cargar_tus_monedas);
+ }
 }

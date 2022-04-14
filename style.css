@@ -25,7 +25,7 @@
     background: radial-gradient(circle, rgb(255, 119, 171) 0%, rgb(255 255 255) 100%);
     place-items: center;
     transform: var(--transform);
-    transition: transform .3s;
+    transition: transform .5s;
     overflow: auto;
 }
 
@@ -222,7 +222,7 @@
     gap: 1em;
     grid-auto-columns: 100%;
     transform: var(--transform);
-    transition: transform .3s;
+    transition: transform .5s;
 }
 
 .boton_close_tienda{
@@ -334,13 +334,13 @@
     margin: 35px;
     width: 90%;
     max-width: 300px;
-    max-height: 507px;
+    max-height: 412px;
     border-radius: 16px;
     border: 5px solid #d3ad90;
     background: radial-gradient(circle, rgb(255 195 133) 0%, rgb(255 255 255) 100%);
     place-items: center;
     transform: var(--transform);
-    transition: transform .3s;
+    transition: transform .5s;
     overflow: auto;
 }
 
@@ -380,7 +380,7 @@
 }
 
 .divParaElCloseDelInventario{
-    padding-top: 363px;
+    padding-top: 132px;
     margin-left: -96px;
 }
 
@@ -431,7 +431,7 @@
     place-items: center;
     grid-auto-columns: 100%;
     transform: var(--transform);
-    transition: transform .3s;
+    transition: transform .5s;
 }
 
 .boton_close_logros{
@@ -447,7 +447,8 @@
 }
 
 .divParaElCloseDeLogros{
-    padding-top: 218px;
+    padding-top: 38px;
+    padding-right: 7px;
 }
 
 .modal--show_2{
@@ -476,6 +477,7 @@
     border-radius: 11px;
     box-shadow: 2px 4px 9px;
     width: 170px;
+    background: #ffffff61;
 }
 
 .contenedorDel_p_delSoundtrack:active{
@@ -484,24 +486,48 @@
 }
 
 
-/*chat*/
+/*Guardar*/
 
-.contenedorDel_Chat{
+.contenedorDel_Guardar{
     border: 1px solid #120855;
     border-radius: 11px;
     box-shadow: 2px 4px 9px;
     margin-top: 25px;
     width: 170px;
+    background: #ffffff61;
 }
 
-.p_delChat{
+.p_delGuardar{
     font-size: 26px;
     padding-right: 10px;
-    padding-left: 10px;
+    padding-left: 28px;
     margin: 13px;
 }
 
-.contenedorDel_Chat:active{
+.contenedorDel_Guardar:active{
+    background-color: rgba(59, 53, 145, 0.329);
+    width: 169px;
+}
+
+/*Cargar*/
+
+.contenedorDel_Cargar{
+    border: 1px solid #120855;
+    border-radius: 11px;
+    box-shadow: 2px 4px 9px;
+    margin-top: 25px;
+    width: 170px;
+    background: #ffffff61;
+}
+
+.p_delCargar{
+    font-size: 26px;
+    padding-right: 10px;
+    padding-left: 34px;
+    margin: 13px;
+}
+
+.contenedorDel_Cargar:active{
     background-color: rgba(59, 53, 145, 0.329);
     width: 169px;
 }
