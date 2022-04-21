@@ -8,10 +8,26 @@ let arco1 = false;
 let llave1 = false;
 let pico_primitivo = false;
 let espada_daily = false;
+let guantelete = false;
+
+let bayas = 0;
 
 let correo = false;
 
 let player = false;
+
+
+/* Sonidos fx */
+
+let ruidoDeComer_bayas = new Audio("soundtracks/come_fx.mp3");
+let ruidoDeTap = new Audio ("soundtracks/tap_fx.mp3");
+let ruidoDeComprar = new Audio ("soundtracks/comprar.mp3");
+let ruidoDeGolpear = new Audio ("soundtracks/golpe.mp3");
+let ruidoDeEsquivar = new Audio ("soundtracks/esquivar.mp3");
+let ruidoDeGanarMonedas = new Audio ("soundtracks/ganarMonedas.mp3");
+let ruidoDeCarta = new Audio ("soundtracks/Carta.mp3");
+let ruidoDeRopa = new Audio ("soundtracks/ropa.mp3");
+let ruidoDeAbrirMochila = new Audio ("soundtracks/AbrirMochila.mp3")
 
 /* Puntos de habilidades */
 
@@ -22,9 +38,9 @@ let nivel_inner = document.querySelector(".nivelDelPlayer");
 nivel_inner.innerHTML = nivel;
 
 
-let salud = 100;
-let salud_inner = document.querySelector(".saludDelPlayer");
-salud_inner.innerHTML = salud;
+let agilidad = 1;
+let agilidad_inner = document.querySelector(".agilidadDelPlayer");
+agilidad_inner.innerHTML = agilidad;
 
 
 let intelecto = 1;
@@ -43,8 +59,6 @@ let puede_minar = false;
 
 /*Economia*/
 
-let puntosDeAdn = 0;
-
 let monedas = 0;
 
 let llaveDelCofre = 0;
@@ -53,8 +67,6 @@ let llaveDelCofre = 0;
 
 let moneda = document.getElementById("infiniteCoin"); 
 moneda.innerHTML = monedas;
-
-
 
 
 
@@ -76,7 +88,6 @@ nombreDeTuMundo1.innerHTML = nombreDeTuMundo0;
 
 if (nombreDeTuMundo0 == "Tatitos Gorditos"){
     monedas = monedas + 1000;
-    puntosDeAdn = puntosDeAdn + 2001;
     moneda.innerHTML = monedas;
     llaveDelCofre = llaveDelCofre + 10;
 } else{
@@ -84,135 +95,395 @@ if (nombreDeTuMundo0 == "Tatitos Gorditos"){
     monedas = monedas + 0;
 }
 
-/* Las variables de los EVENTOS */
-
-let evento1 = `Ha brotado el primer organismo con vida de tu ecosistema "${nombreDeTuMundo0}"! Felicitaciones!`;
-let evento2 = "El brote esta comenzando a obtener mas y mas fuerza!";
-let evento3 = "Increible! El genoma de tu planta es muy resistente! Se esta.. fucionando con la roca?";
-let evento4 = "Parace que este es el inicio de algo inmenso..";
-let evento5 = "Una mutacion extraña dio origen a esporas de hongos.. La era fungi ha llegado! Esto es crucial para la descompociocion de materia organica! ";
-let evento6 = "Parece que los microorganismos pudieron atravezar una barrera muy importante para la vida compleja!";
-let evento7 = `La vida se extiende a gran velocidad por los arlrededores!`;
-let evento8 = "Las plantas de tu ecosistema cada vez vienen mas grandes y variadas! Esto es fantastico, porque da lugar a mas variedad de especies competentes en la carrera de la evolucion!";
-let evento9 = "El primer brote de trigo nace! Y con el cientos de especies de plantas!";
-let evento10 = "Hay una gran variedad de plantas diferentes! Cada vez hay mas, y cada vez nacen mas robustas y con cualidades superiores! estan compitiendo por la supervivencia!";
-let evento11 = "Acaba de nacer el primer insecto complejo capaz de volar! Esto supone un gran avance para el desarrollo de la vida.";
-let evento12 = "La materia prima por exelencia de la naturaleza da origen, algunas especies de plantas optan por cambiar su tallo por algo mas resistente, los insectos son los causantes de esta evolucion! Llega la madera al ecosistema!";
-let evento13 = "El primer arbol en llegar a mas de 5 metros de altura ya es parte del ecosistema! Pronto se formaran poblaciones de arboles y formaran bosques!";
-let evento14 = "Empiezan a crecer muchas variedades de frutos en los arbustos y plantas, esto diversifica la dieta de los seres vivos dandole mas nutrientes!";
-let evento15 = "Cañas de azucar, bamboo y una gran cantidad de nuevas especies de materias primas abundan por todo el ecosistema! Si tan solo exisitiera algun ser inteligente que las aproveche..";
-let evento16 = "La vida se exparse cada vez mas, jovenes bosques nacen dando hospedaje a nuevas poblaciones de seres vivos que buscan un lugar mas comodo donde vivir..";
-let evento17 = "Gracias al surgimiento de bosques y a la polinizacion de los insectos, los arboles fueron capaces de mezclar sus genes, ahora hay algunos especimenes que dan diferentes tipos de frutos y frutas!";
-let evento18 = "Algo increible esta ocurriendo..!";
-let evento19 = "Los anfibios llegaron al ecosistema como por arte de magia!";
-let evento20 = "En las profundidades la vida no para de crecer exponencialmente ni un segundo! Esto es fabuloso!";
-let evento21 = "Los organismos de las profundidades son cada vez mas complejos, estan en una constante evolucion gigantesca!";
-let evento22 = "Miles de diferentes plantas estan en armonia con la tierra, todo esta yendo de maravilla.. Pasaron muchos sucesos hasta ahora, felicitaciones!";
-let evento23 = "Muchas especies acuaticas intentan migrar hacia la tierra! La evolucion los llama! Pero se siente algo extraño..";
-let evento24 = `El primer desastre natural ocurre en ${nombreDeTuMundo0}! Volcanes estallan, y terremotos sacuden todo el suelo! Esto es malo, muy malo! Muchas especies fabulosas se extinguieron sin dejar rastro, tanto adn que desaparece sin mas..`;
-let evento25 = "Grandes formaciones rocosas se establecieron en diferentes lugares despues de los anteriores sucesos catastroficos..";
-let evento26 = "La aparicion de montañas da lugar a nuevos entornos de supervivencia para los seres vivos que se atrevan a vivir alli.";
-let evento27 = "Los rios comenzaron a fluir por diferentes lugares, hubo muchos cambios increibles! Parece como si los desastres naturales hubieran favorecido el entorno natural! Ahora todo es mas caotico, pero.. Asi es la naturaleza.";
-let evento28 = "En los lugares mas frios se comenzo a solidificar el agua formando duras paredes de hielo.. Otro entorno extremo para competir por la supervivencia..";
-let evento29 = "La naturaleza lucha increiblemente por su expansion y abunda cada vez mas, la formacion de diferentes biomas es muy notoria a estas alturas.. Esto puede dar lugar a diferentes evoluciones por ende diferentes especies..";
-let evento30 = "Algunas formaciones volcanicas dieron con la fusion de metales y con la creacion de diferentes piedras y sedimentos.";
-let evento31 = `Algo no normal esta volviendo a suceder en ${nombreDeTuMundo0}!`;
-let evento32 = "Parece que varias mutaciones geneticas se estuvieron enredando desde el comienzo! Y gracias a el entorno cambiante se dio una explocion de ADN cambiante!";
-let evento33 = "Nace el primer reptil que no necesitó volver al agua para sobrevivir!";
-let evento34 = `Llegaron los fabulosos roedores a ${nombreDeTuMundo0}!`;
-let evento35 = "De forma inexplicable las especies estan en su auge aevolutivo, esto supone un increible aumento en los diferentes organismos que iran surgiendo! Cada vez mas sofisticados, complejos, adaptables y sobre todo Inteligentes..";
-let evento36 = "Hay ya una gran variedad de animales! En particular los marsupiales son los que mas rapido se estan reproduciendo! Esque todavia no tienen depredadores?";
-let evento37 = `${nombreDeTuMundo0} esta incubando una gran nueva evolucion, se trata de una fusion entre genes muy particular!`;
-let evento38 = `Los primeros "grandes" depredadores llegaron a ${nombreDeTuMundo0}! Esto supone un balance entre las especies`;
-let evento39 = `Una rama de la especie mas nueva que ha llegado a ${nombreDeTuMundo0} esta por dar origen! Este tipo de eventos son cruciales para una nueva especie completamente nueva!`;
-let evento40 = "Los quiropteros son parte del ecosistema! Ellos son fundamentales para un buen desarrollo del entorno ambiental, pues mantienen en equilibrio la biodiversidad de los ecosistemas que habitan!";
-let evento41 = `La variacion prolongada de las moleculas de las especies que fueron surgiendo a lo largo de la historia de ${nombreDeTuMundo0} sigue provocando increibles anomalias!`;
-let evento42 = `La primer ave capaz de estar volando mas de "14 horas" sin aterrizar ha nacido!`;
-let evento43 = "En el interior de los mamiferos crece una latente llama de incansable vigor!";
-let evento44 = "Gracias a los mamiferos surgieron especimenes increiblemente aptos para la supervivencia por exelecia!";
-let evento45 = `Todo esta marchando bien! Nunca antes hubo tal cantidad de vida en ${nombreDeTuMundo0}, teniendo en cuenta que esto recien comienza es un gran logro..`;
-let evento46 = "El mar y los oceanos son actualmente el motor de la inicializacion de la vida! En estos maravillosos lugares siguen surgiendo criaturas exepcionales y fabulosas! La primer tortuga en vivir mas de 170 años acaba de fallecer! Pero dejo consigo un gran avance en los genomas para la evolucion de su especie!";
-let evento47 = `Aunque la vida esta constantemente en su auge no todo son buenas noticias! A cada instante mueren una gran variedad de seres vivos, dejando mucho material genetico preciado olvidado para siempre! Pero de eso se trata la vida! Todos contribuyeron a la historia de!${nombreDeTuMundo0}`;
-let evento48 = "";
-let evento49 = "";
-let evento50 = "";
-let evento51 = "";
 
 /* La funcion de los eventos */
+// COMBATE!
 
-function nuevoEvento(evento,icono,milisegundo,infinitecoin,puntosdeADN2){
+let boton_negar = document.querySelector(".boton_negar");
+let boton_aceptar = document.querySelector(".boton_aceptar");
+let salud_del_enemigo = document.querySelector(".salud_del_enemigo");
+
+
+let aldeano = true;
+
+// LLAVES PARA LOS EVENTOS: (Sirven para que no se bugeen las decisiones).
+
+let llave_aldeano = undefined;
+let llave_carta = undefined;
+let llave_mapache = undefined;
+let llave_norte = undefined;
+
+
+let puedes_avanzar_de_escenario = false;
+
+
+let escenario = 1;
+
+let tocarParaComenzar = document.getElementById("vidaIc");
+tocarParaComenzar.addEventListener("click", salta_de_evento);
+
+function salta_de_evento(){
          setTimeout(()=>{
         let ultimoEvento = document.getElementById("ultimoEvento");
-        ultimoEvento.innerHTML = evento;
-        let vidaIcono = document.getElementById("vidaIc").src=`iconos/lineaTemporal/${icono}`;
-        monedas = monedas +infinitecoin;
-        moneda.innerHTML = monedas;
-        puntosDeAdn = puntosDeAdn +puntosdeADN2;
-    },milisegundo);
+
+
+
+/* Escenacrios */
+        
+        escenario = escenario +1;
+
+        if (escenario == 2) {
+
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono2.png`;
+
+            ultimoEvento.innerHTML = "En este icono podras guardar y cargar la partida, asi como tambien cambiar algunos de los ajustes del juego!";
+            
+            monedas = monedas +0;
+            moneda.innerHTML = monedas;
+
+        } else if(escenario == 3){
+
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono3.png`;
+
+            ultimoEvento.innerHTML = "Las monedas se ganan de muchas maneras! Con ellas puedes comprar en la tienda!";
+
+        } else if(escenario == 4){
+            
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono4.png`;
+
+            ultimoEvento.innerHTML = "Esta es la tienda, en ella podras comprar cofres de diferentes valores!";
+
+
+        } else if(escenario == 5){
+            
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono5.png`;
+
+            ultimoEvento.innerHTML = "Esta es tu mochila, aqui se guardaran tus objetos y tu comida!";
+
+        } else if(escenario == 6){
+            
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono6.png`;
+
+            ultimoEvento.innerHTML = "La comida saciara tu hambre! Es muy importante, ya que de comer depende tu supervivencia!";
+
+        } else if(escenario == 7){
+            
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono7.png`;
+
+            ultimoEvento.innerHTML = "La medicina te sanara la salud, puedes perderla mediante enfrentamientos o bien si tu hambre llega a 0";
+
+        } else if(escenario == 8){
+            
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono11.png`;
+
+            ultimoEvento.innerHTML = "Algunos items como el pico, te serviran para poder realizar acciones o trabajos nuevos!";
+
+        } else if(escenario == 9){
+            
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono12.png`;
+
+            ultimoEvento.innerHTML = "Este es el cofre diario! Cada cierto tiempo podras obtener una recompenza aleatoria!";
+
+        } else if(escenario == 10){
+            
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/iconoFinalDelTutorial.png`;
+
+            ultimoEvento.innerHTML = "Y recuerda! Esta es una version experimental! Muchas cosas pueden fallar, espero que disfrutes del juego!";
+
+
+            /* Comienza el juego */
+
+        } else if(escenario == 11){
+            
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono8.png`;
+
+            ultimoEvento.innerHTML = "Pulsa en este icono, se encuentra arriba a la derecha, alli crearas a tu personaje, y tendras acceso a todas sus estadisticas";
+        }
+            
+        if (player == true && escenario == 12) {
+
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/bayas.png`;
+            ultimoEvento.innerHTML = "Te encuentras un pequeño arbusto de bayas por el camino!"
+            bayas = bayas + 1;
+            itemDebayas.classList.add("itemDelInventario_mostrar");
+
+                
+        } else if(player == true && escenario == 13){
+            
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono1.png`;
+
+            ultimoEvento.innerHTML = "Luego de caminar varios cientos de metros siguiendo tu brujula, te topas con un hombre que sale de los altos arbustos..";
+
+        } else if(player == true && escenario == 14){
+            llave_aldeano = true;
+            
+            document.querySelector(".boton_negar").src=`iconos/lineaTemporal/esquivar.png`;
+            document.querySelector(".boton_aceptar").src=`iconos/lineaTemporal/atacar.png`;
+
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/primerNPC.png`;
+
+            ultimoEvento.innerHTML = "- Que haces en mis tierras!? Maldito ladron voy a asesinarte!";
+
+            salud_del_enemigo.classList.add("salud_del_enemigo_mostrar");
+            boton_negar.classList.add("boton_mostrar");
+            boton_aceptar.classList.add("boton_mostrar");
+
+            boton_aceptar.addEventListener("click",golpear);
+            boton_negar.addEventListener("click",bloquear);
+
+            
+            let fuerzaDelAldeano = 5;
+
+            let podes_atacar = true;
+
+            function golpear(){
+                if (llave_aldeano == true) {
+
+                    ruidoDeGolpear.play();
+
+                if (podes_atacar == true) {
+                    salud_del_enemigo.value = salud_del_enemigo.value - fuerza1;
+                    podes_atacar = false;
+                    boton_aceptar.classList.add("boton_culdown");
+                    boton_negar.classList.remove("boton_culdown");
+                }else{
+                    return("No podes atacar");
+                }
+
+                if (salud_del_enemigo.value <= 0) {
+                    aldeano = false;
+                    escenario = 14;
+                    fuerzaDelAldeano = 0;
+
+                    ruidoDeGanarMonedas.play();
+                    monedas = monedas + 10;
+                    moneda.innerHTML = monedas;//Agregar notificacion
+
+                    boton_aceptar.classList.add("boton_culdown");
+                    boton_negar.classList.add("boton_culdown");
+                }
+
+
+            }
+                }
+                
+
+            function bloquear(){
+               if (llave_aldeano == true) {
+                    ruidoDeEsquivar.play();
+
+                    let daño_recibido = fuerzaDelAldeano - agilidad;
+                    podes_atacar = true;
+                    boton_aceptar.classList.remove("boton_culdown");
+                    boton_negar.classList.add("boton_culdown");
+
+                    if (daño_recibido > 0) {
+                        salud_barra.value = salud_barra.value - daño_recibido;
+                    }
+
+            }
+                }
+                
+
+
+
+        } else if(player == true && escenario == 15 && aldeano == false){
+            llave_aldeano = false;
+            llave_norte = true;
+            salud_del_enemigo.classList.remove("salud_del_enemigo_mostrar");
+            boton_aceptar.classList.remove("boton_culdown");
+            boton_negar.classList.remove("boton_culdown");
+            
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono1.png`;
+
+            ultimoEvento.innerHTML = "Intentas utilizar nuevamente tu brujula pero no funciona, debio de haberse roto en el combate, debes elegir por donde avanzar";
+            
+
+            document.querySelector(".boton_negar").src=`iconos/lineaTemporal/izquierda.png`;
+            document.querySelector(".boton_aceptar").src=`iconos/lineaTemporal/derecha.png`;
+
+            boton_aceptar.addEventListener("click",norte);
+            boton_negar.addEventListener("click",sur);
+
+            function norte(){
+            if(puedes_avanzar_de_escenario == false && llave_norte == true){
+                ruidoDeGanarMonedas.play();
+                monedas = monedas + 10;
+                moneda.innerHTML = monedas;//Agregar notificacion
+                puedes_avanzar_de_escenario = true;
+
+                boton_aceptar.classList.add("boton_culdown");
+                boton_negar.classList.add("boton_culdown");
+
+            }}
+            function sur(){
+                if (puedes_avanzar_de_escenario == false && llave_norte == true){
+                ruidoDeEsquivar.play();
+                agilidad = agilidad + 1;
+                agilidad_inner.innerHTML = agilidad;//Agregar notificacion
+                puedes_avanzar_de_escenario = true;
+
+                boton_aceptar.classList.add("boton_culdown");
+                boton_negar.classList.add("boton_culdown");
+                }
+                
+            }
+            
+        
+
+        } else if(player == true && escenario == 16 && aldeano == false && puedes_avanzar_de_escenario == true){
+            llave_norte = false;
+            llave_carta = true;
+            boton_aceptar.classList.remove("boton_culdown");
+            boton_negar.classList.remove("boton_culdown");
+
+            
+
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/correo.png`;
+
+            ultimoEvento.innerHTML = "Hay mucho viento, y notas que una carta de papel te sobre vuela las rodillas pero sigue de largo, al mismo tiempo vez el reflejo de unas monedas a lo lejos..";
+        
+
+            document.querySelector(".boton_negar").src=`iconos/lineaTemporal/elegir_correo.png`;
+            document.querySelector(".boton_aceptar").src=`iconos/lineaTemporal/icono3.png`;
+
+            boton_negar.addEventListener("click",elegir_correo);
+            boton_aceptar.addEventListener("click",elegir_monedas);
+
+            function elegir_correo(){
+                if (puedes_avanzar_de_escenario == true && llave_carta == true){
+                    ruidoDeCarta.play();
+                    correo = true; //Poner notificacion
+                    puedes_avanzar_de_escenario = false;
+
+                    boton_aceptar.classList.add("boton_culdown");
+                    boton_negar.classList.add("boton_culdown");
+                }
+            }
+
+            function elegir_monedas(){
+                if (puedes_avanzar_de_escenario == true && llave_carta == true){
+                    ruidoDeGanarMonedas.play();
+                    monedas = monedas + 10;
+                    moneda.innerHTML = monedas;//Agregar notificacion
+                    puedes_avanzar_de_escenario = false;
+
+                    boton_aceptar.classList.add("boton_culdown");
+                    boton_negar.classList.add("boton_culdown");
+                }
+            }
+            
+
+        } else if(player == true && escenario == 17 && aldeano == false && puedes_avanzar_de_escenario == false){
+            llave_carta = false;
+            llave_mapache = true;
+            
+            document.querySelector(".boton_negar").src=`iconos/lineaTemporal/esquivar.png`;
+            document.querySelector(".boton_aceptar").src=`iconos/lineaTemporal/atacar.png`;
+
+            boton_aceptar.classList.remove("boton_culdown");
+            boton_negar.classList.remove("boton_culdown");
+
+
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/mapache.png`;
+
+            ultimoEvento.innerHTML = "Un mapache se avalanza hacia tu cara!";
+
+
+            salud_del_enemigo.classList.add("salud_del_enemigo_mostrar");
+            boton_negar.classList.add("boton_mostrar");
+            boton_aceptar.classList.add("boton_mostrar");
+
+            boton_aceptar.addEventListener("click",golpear_mapache);
+            boton_negar.addEventListener("click",bloquear_mapache);
+
+            
+            let fuerzaDelAldeano = 5;
+
+            salud_del_enemigo.value = 10;
+            salud_del_enemigo.max = 10;
+
+            aldeano = true;
+
+            let podes_atacar = true;
+
+            function golpear_mapache(){
+                ruidoDeGolpear.play();
+                if (podes_atacar == true && llave_mapache == true) {
+                    salud_del_enemigo.value = salud_del_enemigo.value - fuerza1;
+                    podes_atacar = false;
+                    boton_aceptar.classList.add("boton_culdown");
+                    boton_negar.classList.remove("boton_culdown");
+                }else{
+                    return("No podes atacar");
+                }
+
+                if (salud_del_enemigo.value <= 0) {
+                    aldeano = false;
+                    escenario = 17;
+                    fuerzaDelAldeano = 0;
+
+                    nivel = nivel + 1;
+                    nivel_inner.innerHTML = nivel;
+
+                    ruidoDeGanarMonedas.play();
+                    monedas = monedas + 10;
+                    moneda.innerHTML = monedas;//Agregar notificacion
+
+                    boton_aceptar.classList.add("boton_culdown");
+                    boton_negar.classList.add("boton_culdown");
+                    
+                }
+
+
+            }
+
+            function bloquear_mapache(){
+
+                ruidoDeEsquivar.play();
+                let daño_recibido = fuerzaDelAldeano - agilidad;
+                podes_atacar = true;
+                boton_aceptar.classList.remove("boton_culdown");
+                boton_negar.classList.add("boton_culdown");
+
+                if (daño_recibido > 0) {
+                    salud_barra.value = salud_barra.value - daño_recibido;
+                }
+
+            }
+
+
+        } else if(player == true && escenario == 18 && aldeano == false){
+
+            llave_mapache = false;
+
+            salud_del_enemigo.classList.remove("salud_del_enemigo_mostrar");
+            
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/mapa.png`;
+
+            ultimoEvento.innerHTML = "Vez un mapa que esta clavado en un arbol, puedes intentar seguir cualquiera de sus 2 rutas..";
+        }
+
+    });
 }
 
-/* Llamados a los eventos */
 
-nuevoEvento(evento1,"vida1.1.png",11000,1,1);
-nuevoEvento(evento2,"vida1.5.png",21000,1,2);
-nuevoEvento(evento3,"vida2.01.png",35000,1,3);
-nuevoEvento(evento4,"vida2.02.png",47000,1,3);
-nuevoEvento(evento5,"vida2.2.png",55000,1,5);
-nuevoEvento(evento6,"vida2.003.png",75000,1,10);
-nuevoEvento(evento7,"vida2.03.png",85000,1,3);
-nuevoEvento(evento8,"vida2.3.png",95000,1,11);
-nuevoEvento(evento9,"vida2.4.png",110000,1,12);
-nuevoEvento(evento10,"vida2.5.png",125000,1,15);
-nuevoEvento(evento11,"vida2.6.png",135000,1,31);
-nuevoEvento(evento12,"vida3.1.png",147000,1,11);
-nuevoEvento(evento13,"vida3.2.png",158000,1,21);
-nuevoEvento(evento14,"vida3.3.png",169000,1,13);
-nuevoEvento(evento15,"vida3.04.png",180000,1,11);
-nuevoEvento(evento16,"vida3.4.png",193000,1,41);
-nuevoEvento(evento17,"vida3.0005.png",205000,1,31);
-nuevoEvento(evento18,"vida3.004.png",210000,1,100);
-nuevoEvento(evento19,"vida3.05.png",223000,1,51);
-nuevoEvento(evento20,"vida3.5.png",234000,1,11);
-nuevoEvento(evento21,"vida3.6.png",245000,1,11);
-nuevoEvento(evento22,"vida3.7.png",256000,1,1);
-nuevoEvento(evento23,"vida3.8.png",267000,1,21);
-nuevoEvento(evento24,"vida4.1.png",278000,1,-150);
-nuevoEvento(evento25,"vida4.2.png",289000,1,1);
-nuevoEvento(evento26,"vida4.3.png",3030000,1,1);
-nuevoEvento(evento27,"vida4.4.png",315000,1,1);
-nuevoEvento(evento28,"vida4.5.png",326000,1,1);
-nuevoEvento(evento29,"vida4.6.png",337000,1,1);
-nuevoEvento(evento30,"vida5.png",348000,1,1);
-nuevoEvento(evento31,"vida6.png",360000,1,31);
-nuevoEvento(evento32,"vida7.png",373000,1,41);
-nuevoEvento(evento33,"vida10.01.png",384000,1,51);
-nuevoEvento(evento34,"vida10.1.png",395000,1,51);
-nuevoEvento(evento35,"vida10.2.png",415000,1,51);
-nuevoEvento(evento36,"vida10.6.png",430000,1,51);
-nuevoEvento(evento37,"vida10.7.png",445000,1,21);
-nuevoEvento(evento38,"vida10.8.png",460000,1,61);
-nuevoEvento(evento39,"vida10.9.png",475000,1,111);
-nuevoEvento(evento40,"vida11.0.png",500000,1,51);
-nuevoEvento(evento41,"vida11.1.png",515000,1,51);
-nuevoEvento(evento42,"vida11.2.png",515000,1,21);
-nuevoEvento(evento43,"vida11.3.png",530000,1,21);
-nuevoEvento(evento44,"vida11.4.png",545000,1,21);
-nuevoEvento(evento45,"vida11.5.png",560000,1,21);
-nuevoEvento(evento46,"vida11.6.png",575000,1,21);
-nuevoEvento(evento47,"vida11.7.png",590000,1,-80);
-nuevoEvento(evento48,"vida11.8.png",605000,1,20);
-nuevoEvento(evento49,"vida11.9.png",620000,1,20);
-nuevoEvento(evento50,"vida11.10.png",635000,1,20);
-nuevoEvento(evento51,"vida11.11.png",650000,1,250);
 
-/*Saber cuantos puntos de ADN tenes*/
+
+
+
+
+/*Crear personaje*/
 let estadisticas = false;
 
 let adn2 = document.getElementById("adn");
 adn2.addEventListener("click",mostrarAdn);
 
 function mostrarAdn(){
-    if(puntosDeAdn >= 2000 && player == false){
+
+    ruidoDeTap.play();
+
+    if(player == false && escenario >= 11){
 
         let nombreDeTuPersonaje = prompt("Como se llamará tu personaje?");
 
@@ -224,13 +495,10 @@ function mostrarAdn(){
 
         alert(`${nombreDeTuPersonaje} pudo encarnar su alma en las tierras de ${nombreDeTuMundo0}. De ahora en adelante se forjara tu camino.`)
 
-        puntosDeAdn = puntosDeAdn - 2000;
+        escenario = 11;
+        estadisticas = true;
         player = true
-} else if(puntosDeAdn <= 1999 && player == false){
-    alert(`Tienes un total de ${puntosDeAdn} puntos de Adn, y necesitas 2000 para que nazca tu personaje`);
-} else{
-    estadisticas = true;
-}
+} else{}
 }
 
 /*Player hud*/
@@ -245,17 +513,39 @@ let estadistica = document.querySelector(".Adn");
 estadistica.addEventListener("click",abrirEstadisticas);
 
 function abrirEstadisticas(){
+
+    ruidoDeTap.play();
+
     if(estadisticas == true){
     modal_player.classList.add("modal--show_player");
+
+ nivel_inner.innerHTML = nivel;
+ agilidad_inner.innerHTML = agilidad;
+ intelecto_inner.innerHTML = intelecto;
+ fuerza_inner.innerHTML = fuerza1;
+
 }else{}
 }
 
 function cerrarEstadisticass(){
+
+    ruidoDeTap.play();
+
     modal_player.classList.remove("modal--show_player");
 }
 
+
+/* COMER Y SALUD DEL PJ */
+let barra_de_salud = document.querySelector(".salud");
+let hambre_barra = document.querySelector(".hambre");
 /* Elejir personaje */
 
+
+let salud_barra = document.querySelector(".salud");
+let div_de_salud = document.querySelector(".salud_div");
+
+let hambre = document.querySelector(".hambre");
+let div_de_hambre = document.querySelector(".hambre_div");
 let mostrarInfoDelPlayer = document.querySelector(".infoDelPlayer");
 let mostrarInfoDelPlayer_texto = document.querySelector(".infoDelPlayer_texto");
 let botonClosePlayerSi = document.querySelector(".boton_close_player");
@@ -268,6 +558,13 @@ let personaje_chica = document.querySelector(".personaje_chica");
 personaje_chica.addEventListener("click",elejirChica);
 
 function elejirChica(){
+
+    ruidoDeTap.play();
+
+    salud_barra.classList.add("salud_mostrar");
+    div_de_salud.classList.add("salud_div_mostrar");
+    hambre.classList.add("hambre_mostrar");
+    div_de_hambre.classList.add("hambre_div_mostrar");
     personaje_chica.classList.add("eligio_chica");
     personaje_chico.classList.remove("characters");
     personaje_chico.classList.add("character_no");
@@ -275,11 +572,39 @@ function elejirChica(){
     mostrarInfoDelPlayer_texto.classList.add("infoDelPlayer_texto_si");
     botonClosePlayerSi.classList.add("boton_close_player_si");
     mina.classList.add("mina_si");
-    intelecto = intelecto + 5;
-    intelecto_inner.innerHTML = intelecto;
+
+    if(agilidad == 1){
+        agilidad = agilidad + 2;
+        agilidad_inner.innerHTML = agilidad;
+    }
+    
+    setInterval(tener_hambre_6s, 60000);
+
+    function tener_hambre_6s(){
+
+        if(hambre_barra.value > 0){
+
+            hambre_barra.value = hambre_barra.value -5;
+         
+        } else if(hambre_barra.value == 0 && barra_de_salud.value > 0) {
+
+            barra_de_salud.value = barra_de_salud.value -10;
+
+        } else{
+            alert(`Haz muerto, conseguiste una puntuacion de ${nivel * 7 + 155}`);
+        }
+    }
+
 }
 
 function elejirChico(){
+
+    ruidoDeTap.play();
+
+    salud_barra.classList.add("salud_mostrar");
+    div_de_salud.classList.add("salud_div_mostrar");
+    hambre.classList.add("hambre_mostrar");
+    div_de_hambre.classList.add("hambre_div_mostrar");
     personaje_chico.classList.add("eligio_chico");
     personaje_chica.classList.remove("characters");
     personaje_chica.classList.add("character_no");
@@ -287,9 +612,31 @@ function elejirChico(){
     mostrarInfoDelPlayer_texto.classList.add("infoDelPlayer_texto_si");
     botonClosePlayerSi.classList.add("boton_close_player_si");
     mina.classList.add("mina_si");
-    fuerza1 = fuerza1 + 5;
-    fuerza_inner.innerHTML = fuerza1;
-}
+
+    if(fuerza1 == 1){
+        fuerza1 = fuerza1 + 2;
+        fuerza_inner.innerHTML = fuerza1;
+    }
+   
+
+    setInterval(tener_hambre_6s, 60000);
+
+    function tener_hambre_6s(){
+
+        if(hambre_barra.value > 0){
+
+            hambre_barra.value = hambre_barra.value -5;
+         
+        } else if(hambre_barra.value == 0 && barra_de_salud.value > 0) {
+
+            barra_de_salud.value = barra_de_salud.value -10;
+
+        } else{
+            alert(`Haz muerto, conseguiste una puntuacion de ${nivel * 7 + 155}`);
+        }
+    }
+ }
+
 
 /* IR A LA MINA */
 
@@ -300,6 +647,9 @@ let puede_entrar_a_la_mina = document.querySelector(".mina_no_href");
 
 
 function entrar_a_la_mina(){
+
+    ruidoDeTap.play();
+
     if(puede_minar == true){
         puede_entrar_a_la_mina.classList.add("mina_si_href");
     }
@@ -322,10 +672,16 @@ let tienda_1 = document.querySelector(".tiendaIcono");
 tienda_1.addEventListener("click",abrirTienda);
 
 function abrirTienda(){
+
+    ruidoDeTap.play();
+
     modal_1.classList.add("modal--show_1");
 }
 
 function cerrarTienda(){
+
+    ruidoDeTap.play();
+
     modal_1.classList.remove("modal--show_1");
 }
 
@@ -338,6 +694,8 @@ function cerrarTienda(){
 let itemDeLaPluma = document.querySelector(".itemDelInventario_2");
 let itemDelArco = document.querySelector(".itemDelInventario_3");
 let itemDePicoPrimitivo = document.querySelector(".itemDelInventario_4");
+let itemDebayas = document.querySelector(".itemDelInventario_bayas")
+let itemGuanteleteDeCuero = document.querySelector(".itemDelInventario_guanteleteDeCuero");
 
 
 let statsDeCofreDeMadera = document.querySelector(".AAA");
@@ -348,6 +706,9 @@ let cofreDeMadera = document.getElementById("itemMadera");
 cofreDeMadera.addEventListener("click",mostrarDatosDelItem);
 
 function mostrarDatosDelItem(){
+
+    ruidoDeTap.play();
+
     if(cofreDeMadera.classList.contains("itemDeLaTienda_madera")){
         cofreDeMadera.classList.remove("itemDeLaTienda_madera");
         statsDeCofreDeMadera.classList.remove("EstatsDelCofreDeMadera");
@@ -367,6 +728,8 @@ botonBuild.addEventListener("click",comprarCofreDeMadera);
 function comprarCofreDeMadera(){
     if(monedas >= 25 && player == true){
 
+        ruidoDeComprar.play();
+
         monedas = monedas - 25;
         moneda.innerHTML = monedas;
 
@@ -376,26 +739,34 @@ function comprarCofreDeMadera(){
 
             if(numeroRandom1 == 1 && plumaNegra == false){
                 plumaNegra = true;
-                alert(`Felicitaciones! Haz conseguido "Pluma Negra", aumenta tu salud y tu fuerza!`);
+                alert(`Felicitaciones! Haz conseguido "Pluma Negra", aumenta tu agilidad!`);
                 itemDeLaPluma.classList.add("itemDelInventario_mostrar");
-                salud = salud + 10;
-                fuerza1 = fuerza1 + 2;
-                salud_inner.innerHTML = salud;
-                fuerza_inner.innerHTML = fuerza1;
+                agilidad = agilidad +5;
+                agilidad_inner.innerHTML = agilidad;
 
             } else if(numeroRandom1 == 2 && arco1 == false){
                 arco1 = true;
                 itemDelArco.classList.add("itemDelInventario_mostrar");
 
-                alert(`Felicitaciones! Haz conseguido "Arco de madera", tu nivel y tu intelecto`);
+                alert(`Felicitaciones! Haz conseguido "Arco de madera", aumenta tu nivel y tu intelecto`);
                 nivel = nivel + 1;
                 intelecto = intelecto + 2;
                 nivel_inner.innerHTML = nivel;
                 intelecto_inner.innerHTML = intelecto;
 
-            } else if(numeroRandom1 == 3 && llave1 == false){
-                llave1 = true;
-                alert(`Felicitaciones! Haz conseguido "Llave de metal"`);
+            } else if(numeroRandom1 == 3 && guantelete == false){
+                guantelete = true;
+                alert(`Felicitaciones! Haz conseguido "Guantelete de cuero", aumenta tu fuerza y tu agilidad`);
+
+                nivel = nivel + 1;
+                agilidad = agilidad + 2;
+                fuerza1 = fuerza1 + 2;
+                nivel_inner.innerHTML = nivel;
+                agilidad_inner.innerHTML = agilidad;
+                fuerza_inner.innerHTML = fuerza1;
+
+                itemGuanteleteDeCuero.classList.add("itemDelInventario_mostrar");
+
 
             } else if(numeroRandom1 == 4 && pico_primitivo == false){
                 pico_primitivo = true;
@@ -405,9 +776,9 @@ function comprarCofreDeMadera(){
 
                 alert(`Felicitaciones! Haz conseguido "Pico primitivo", Ahora puedes minar!`);
             }else {
-                fuerza1 = fuerza1 + 1;
-                fuerza_inner.innerHTML = fuerza1;
-                alert(`Felicitaciones! Haz aumentado tu fuerza en 1 punto`);
+                bayas = bayas + 1;
+                itemDebayas.classList.add("itemDelInventario_mostrar");
+                alert(`Felicitaciones! Haz conseguido unas bayas!`);
             }
 
     } else if(monedas >= 25 && player == false){
@@ -415,6 +786,28 @@ function comprarCofreDeMadera(){
     } else{
         alert(`Fondos insuficientes, faltan ${25 - monedas} Infinite coins`);
     }
+}
+
+/* COMER (BAYAS)*/
+
+itemDebayas.addEventListener("click",comer_bayas);
+
+function comer_bayas(){
+
+    if(hambre_barra.value <= 75){
+
+        bayas = bayas -1;
+        hambre_barra.value = hambre_barra.value +25;
+        ruidoDeComer_bayas.play();
+
+    } else{
+        alert("Aun no tienes suficiente hambre");
+    }
+
+    if (bayas == 0) {
+        itemDebayas.classList.remove("itemDelInventario_mostrar");
+    }
+
 }
 
 /*LOGROS (Que en realidad es Setings)*/
@@ -429,10 +822,16 @@ let tienda_2 = document.querySelector(".logrosIcono");
 tienda_2.addEventListener("click",abrirLogros);
 
 function abrirLogros(){
+
+    ruidoDeTap.play();
+
     modal_2.classList.add("modal--show_2");
 }
 
 function cerrarLogros(){
+
+    ruidoDeTap.play();
+
     modal_2.classList.remove("modal--show_2");
 }
 
@@ -452,6 +851,9 @@ let bag = document.querySelector(".bag");
 bag.addEventListener("click",abrirInventario);
 
 function abrirInventario(){
+
+    ruidoDeAbrirMochila.play();
+
     if(correo == true){
         itemDelCorreo.classList.add("itemDelInventario_mostrar");
     }
@@ -465,33 +867,31 @@ function abrirInventario(){
 
     if(brazalete_nordico == "1"){
         brazalete_nordico_inner.classList.add("itemDelInventario_mostrar")
-        fuerza1 = fuerza1 + 20;
-        salud = salud + 5;
+        fuerza1 = fuerza1 + 10;
         nivel = nivel + 5;
-        intelecto = intelecto + 5;
+        intelecto = intelecto + 1;
     } else{}
 
     if(pendiente_de_zafiro == "1"){
         pendiente_de_zafiro_inner.classList.add("itemDelInventario_mostrar")
-        salud = salud + 10;
         nivel = nivel + 5;
         intelecto = intelecto + 10;
     } else{}
 
     if(collar_de_tiburon == "1"){
         collar_de_tiburon_inner.classList.add("itemDelInventario_mostrar")
-        salud = salud + 25;
         nivel = nivel + 5;
-        intelecto = intelecto + 5;
+        agilidad = agilidad + 11;
     } else{}
 
     
     if(lujo_delRey == "1"){
         lujo_del_rey_inner.classList.add("itemDelInventario_mostrar")
-        salud = salud + 15;
-        nivel = nivel + 10;
-        intelecto = intelecto + 5;
-        fuerza1 = fuerza1 + 5;
+        intelecto = intelecto + 1;
+        fuerza1 = fuerza1 + 1;
+        agilidad = agilidad + 1;
+        barra_de_salud.max = barra_de_salud.max + 20;
+        barra_de_salud.value = barra_de_salud.value + 20;
     } else{}
 }
 
@@ -501,12 +901,18 @@ let closeModal = document.querySelector(".boton_close_inventario");
 closeModal.addEventListener("click",cerrarInventario);
 
 function cerrarInventario(){
+
+    ruidoDeTap.play();
+
     modal.classList.remove("modal--show");
 }
 
 /*Rewards of the Daily chest*/
 
 function OpenDailyChest(){
+
+    ruidoDeTap.play();
+
     let numeroRandom = Math.random()*100;
     numeroRandom = Math.floor(numeroRandom);
     numeroRandom = numeroRandom + 1;
@@ -556,6 +962,9 @@ let abrirCofreDiario = document.getElementById("cofreDiario");
 abrirCofreDiario.addEventListener("click",abrirElCofre);
 
 function abrirElCofre(){
+
+ruidoDeTap.play();
+
     if (llaveDelCofre >= 1){
         llaveDelCofre = llaveDelCofre -1;
         OpenDailyChest();
@@ -583,6 +992,9 @@ mute.addEventListener("click",playAndMutedSong);
 mute = true;
 
 function playAndMutedSong(){
+
+ruidoDeTap.play();
+
     if(mute == true){
         playSoundtrack.play();
         mute = false;
@@ -604,6 +1016,8 @@ let boton_de_guardar = document.querySelector(".contenedorDel_Guardar");
 boton_de_guardar.addEventListener("click",guardar_la_partida);
 
 function guardar_la_partida(){
+
+ruidoDeTap.play();
 
  if(monedas == 0){
 
@@ -635,6 +1049,8 @@ let boton_de_cargar = document.querySelector(".contenedorDel_Cargar");
 boton_de_cargar.addEventListener("click",cargar_la_partida);
 
 function cargar_la_partida(){
+
+ruidoDeTap.play();
 
 let monedas_cargadas = localStorage.getItem("monedas_guardadas", monedas);
 

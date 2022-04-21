@@ -1,5 +1,5 @@
 *{
-    font-family:'Rubik',Impact;
+    font-family:'Noto Sans';
 }
 
 .body{
@@ -120,7 +120,7 @@
 }
 
 .contadorParaElCofreDiario{
-    margin-top: -5px;
+    margin-top: -28px;
 }
 
 /* Dvis que estan dentro del main contienen cosas */

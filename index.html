@@ -8,7 +8,7 @@
     <title>InfiniteGame</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Island+Moments&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Kalam&family=Noto+Sans:ital,wght@1,500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="native_css.css">
     <link rel="stylesheet" href="style.css">
 
@@ -54,11 +54,14 @@
                 <img src="iconos/Tienda/pluma1.png" class="itemDelInventario itemDelInventario_2">
                 <img src="iconos/Tienda/arco1.png" class="itemDelInventario itemDelInventario_3">
                 <img src="iconos/Tienda/pico_primitivo.png" class="itemDelInventario itemDelInventario_4">
+                <img src="iconos/Tienda/guanteleteDeCuero.png" class="itemDelInventario itemDelInventario_guanteleteDeCuero">
                 <img src="iconos/characters/collar_tiburon.png" class="itemDelInventario itemDelInventario_5">
                 <img src="iconos/characters/lujo_del_rey.png" class="itemDelInventario itemDelInventario_6">
                 <img src="iconos/characters/pendiente_zafiro.png" class="itemDelInventario itemDelInventario_7">
                 <img src="iconos/characters/brazalete_nordico.png" class="itemDelInventario itemDelInventario_8">
+                <img src="iconos/Tienda/bayas.png" class="itemDelInventario itemDelInventario_bayas">
                 <img src="iconos/Tienda/espada_daily.png" class="itemDelInventario itemDelInventario_9">
+                
                 <img src="iconos/Tienda/correo.png" class="itemDelInventario itemDelInventario_1">
             </div>
             <div class="divParaElCloseDelInventario">
@@ -78,14 +81,27 @@
             <img src="iconos/characters/chico.png" class="characters personaje_chico">
             <img src="iconos/characters/chica.png" class="characters personaje_chica">
 
+           
+
             <div class="infoDelPlayer">
                 <p class="infoDelPlayer_texto">
                     Nivel:<a class="nivelDelPlayer">0</a><br>
-                    Salud: <a class="saludDelPlayer">0</a><br>
-                    Fuerza: <a class="fuerzaDelPlayer">0</a><br>
-                    Intelecto: <a class="intelectoDelPlayer">0</a><br>
+                    Fuerza:<a class="fuerzaDelPlayer">0</a><br>
+                    Agilidad:<a class="agilidadDelPlayer">0</a><br>
+                    Intelecto:<a class="intelectoDelPlayer">0</a><br>
                 </p>
         </div>
+
+        <div class="salud_div">
+            <progress class="salud" max="100" value="100"></progress>
+            <p class="texto_de_salud">Salud</p>
+        </div>
+
+        <div class="hambre_div">
+            <progress class="hambre" max="100" value="100"></progress>
+            <p class="texto_de_hambre">Hambre</p>
+        </div>
+
         <div class="divParaElCloseDePlayer">
             <a href="#" class="boton_close_player">Close</a>
         </div>
@@ -188,11 +204,18 @@
 
             <p class="nombreDeTuMundo" id="nombreDeTuMundo1">"Nombre de tu mundo"</p>
 
-            <img src="iconos/lineaTemporal/vida.png" class="vidaImg icono" id="vidaIc">
+            <img src="iconos/negar.png" class="boton boton_negar">
 
-            <p class="UltimoEvento" id="ultimoEvento">Estas en el laboratorio hace meses, realmente empiezas a pensar que nada funcionará..</p>
+            <img src="iconos/lineaTemporal/tutorialpng.png" class="vidaImg icono" id="vidaIc">
+
+            <img src="iconos/aceptar.png" class="boton boton_aceptar">
+
+            <progress class="salud_del_enemigo" max="5" value="5"></progress>
+            <p class="UltimoEvento" id="ultimoEvento">Bienvenido al tutorial! No te preocupes, será breve! Presiona el libro!</p>
+
 
         </div>
+
 
     <!-- Cofre Diario, contador, soundtrack -->
 
