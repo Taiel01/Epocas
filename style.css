@@ -261,6 +261,11 @@
     margin-left: -84px;
 }
 
+.salud_pantalla{
+    margin-left: 113px;
+    margin-top: 24px;
+}
+
 
 
 
@@ -635,3 +640,55 @@
 .salud_del_enemigo_mostrar{
     opacity: 1;
 }
+
+#p_resolution {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    margin-top: 247px;
+    background-color: #f5efae;
+
+}
+
+/* Mediaq */
+
+@media (max-width: 374px){
+
+    .change_resolution{
+        width: 374px;
+        height: 1600px;
+        background: linear-gradient(90deg, rgba(165,255,228,1) 0%, rgba(176,246,242,1) 42%, rgba(168,217,255,1) 100%);
+        position: absolute;
+    }
+
+    #p_resolution{
+        opacity: 1;
+    }
+
+    .body{
+        margin: 0px;
+    }
+
+}
+
+@media (min-width: 383px){
+
+    .change_resolution{
+        width: 379px;
+        height: 1600px;
+        background: #a9e7fe;
+        position: absolute;
+
+    }
+
+    #p_resolution{
+        opacity: 1;
+    }
+
+    .body{
+        margin: 0px;
+    }
+
+}
+

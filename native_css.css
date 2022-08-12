@@ -52,7 +52,7 @@
 
 .contenedorDelMein{
     display: grid;
-    grid-template-rows: 25% 47% auto auto;
+    grid-template-rows: auto 20px 291px auto;
     text-align: end;
     color: rgb(1, 0, 14);
     height: 565px;
@@ -84,6 +84,12 @@
     animation-name: palpitar;
     animation-duration: 0.9s;
     animation-iteration-count: infinite;
+}
+
+.yaElijioPj{
+    width: 55px;
+    height: 55px; 
+    animation-name: a;
 }
 
 @keyframes palpitar{

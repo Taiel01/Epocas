@@ -27,7 +27,9 @@ let ruidoDeEsquivar = new Audio ("soundtracks/esquivar.mp3");
 let ruidoDeGanarMonedas = new Audio ("soundtracks/ganarMonedas.mp3");
 let ruidoDeCarta = new Audio ("soundtracks/Carta.mp3");
 let ruidoDeRopa = new Audio ("soundtracks/ropa.mp3");
-let ruidoDeAbrirMochila = new Audio ("soundtracks/AbrirMochila.mp3")
+let ruidoDeAbrirMochila = new Audio ("soundtracks/AbrirMochila.mp3");
+let ruidoDeHierbas = new Audio ("soundtracks/hierbas.mp3");
+let ruidoDeFogata = new Audio ("soundtracks/fogata.mp3");
 
 /* Puntos de habilidades */
 
@@ -83,8 +85,7 @@ for (let index = 0; nombreDeTuMundo0 == null || nombreDeTuMundo0 == "" || nombre
 let nombreDeTuMundo = document.getElementById("nombreDeTuMundo1");
 
 localStorage.setItem("nombre_del_mundo",nombreDeTuMundo0);
-
-nombreDeTuMundo1.innerHTML = nombreDeTuMundo0;
+/*
 
 if (nombreDeTuMundo0 == "Tatitos Gorditos"){
     monedas = monedas + 1000;
@@ -95,6 +96,7 @@ if (nombreDeTuMundo0 == "Tatitos Gorditos"){
     monedas = monedas + 0;
 }
 
+*/
 
 /* La funcion de los eventos */
 // COMBATE!
@@ -112,6 +114,10 @@ let llave_aldeano = undefined;
 let llave_carta = undefined;
 let llave_mapache = undefined;
 let llave_norte = undefined;
+let llave_mapa = undefined;
+let asd = false;
+let irAlReino = undefined;
+let ultimo = false;
 
 
 let puedes_avanzar_de_escenario = false;
@@ -133,7 +139,7 @@ function salta_de_evento(){
         escenario = escenario +1;
 
         if (escenario == 2) {
-
+            ruidoDeTap.play()
             document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono2.png`;
 
             ultimoEvento.innerHTML = "En este icono podras guardar y cargar la partida, asi como tambien cambiar algunos de los ajustes del juego!";
@@ -142,66 +148,67 @@ function salta_de_evento(){
             moneda.innerHTML = monedas;
 
         } else if(escenario == 3){
+            ruidoDeTap.play()
 
             document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono3.png`;
 
             ultimoEvento.innerHTML = "Las monedas se ganan de muchas maneras! Con ellas puedes comprar en la tienda!";
 
         } else if(escenario == 4){
-            
+            ruidoDeTap.play()
             document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono4.png`;
 
-            ultimoEvento.innerHTML = "Esta es la tienda, en ella podras comprar cofres de diferentes valores!";
+            ultimoEvento.innerHTML = "Esta es la tienda, en ella podrás comprar cofres de diferentes valores!";
 
 
         } else if(escenario == 5){
-            
+            ruidoDeTap.play()
             document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono5.png`;
 
-            ultimoEvento.innerHTML = "Esta es tu mochila, aqui se guardaran tus objetos y tu comida!";
+            ultimoEvento.innerHTML = "Esta es tu mochila, aquí se guardarán tus objetos y tu comida!";
 
         } else if(escenario == 6){
-            
+            ruidoDeTap.play()
             document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono6.png`;
 
-            ultimoEvento.innerHTML = "La comida saciara tu hambre! Es muy importante, ya que de comer depende tu supervivencia!";
+            ultimoEvento.innerHTML = "La comida saciará tu hambre! Es muy importante, ya que de comer depende tu supervivencia!";
 
         } else if(escenario == 7){
-            
+            ruidoDeTap.play()
             document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono7.png`;
 
-            ultimoEvento.innerHTML = "La medicina te sanara la salud, puedes perderla mediante enfrentamientos o bien si tu hambre llega a 0";
+            ultimoEvento.innerHTML = "La medicina te sanará la salud, puedes perderla mediante enfrentamientos o bien si tu hambre llega a 0";
 
         } else if(escenario == 8){
-            
+            ruidoDeTap.play()
             document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono11.png`;
 
-            ultimoEvento.innerHTML = "Algunos items como el pico, te serviran para poder realizar acciones o trabajos nuevos!";
+            ultimoEvento.innerHTML = "Algunos ítems como el pico, te servirán para poder realizar acciones o trabajos nuevos!";
 
         } else if(escenario == 9){
-            
+            ruidoDeTap.play()
             document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono12.png`;
 
-            ultimoEvento.innerHTML = "Este es el cofre diario! Cada cierto tiempo podras obtener una recompenza aleatoria!";
+            ultimoEvento.innerHTML = "Este es el cofre diario! Cada cierto tiempo podrás obtener una recompensa aleatoria!";
 
         } else if(escenario == 10){
-            
+            ruidoDeTap.play()
             document.getElementById("vidaIc").src=`iconos/lineaTemporal/iconoFinalDelTutorial.png`;
 
-            ultimoEvento.innerHTML = "Y recuerda! Esta es una version experimental! Muchas cosas pueden fallar, espero que disfrutes del juego!";
+            ultimoEvento.innerHTML = "Y recuerda! Esta es una versión experimental! ¡Muchas cosas pueden fallar, espero que disfrutes del juego!";
 
 
             /* Comienza el juego */
 
         } else if(escenario == 11){
-            
+            ruidoDeTap.play()
             document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono8.png`;
 
-            ultimoEvento.innerHTML = "Pulsa en este icono, se encuentra arriba a la derecha, alli crearas a tu personaje, y tendras acceso a todas sus estadisticas";
+            ultimoEvento.innerHTML = "Pulsa en este icono, se encuentra arriba a la derecha, allí crearás a tu personaje, y tendrás acceso a todas sus estadísticas";
         }
             
         if (player == true && escenario == 12) {
-
+            ruidoDeTap.play()
             document.getElementById("vidaIc").src=`iconos/lineaTemporal/bayas.png`;
             ultimoEvento.innerHTML = "Te encuentras un pequeño arbusto de bayas por el camino!"
             bayas = bayas + 1;
@@ -209,20 +216,20 @@ function salta_de_evento(){
 
                 
         } else if(player == true && escenario == 13){
-            
+            ruidoDeTap.play()
             document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono1.png`;
 
-            ultimoEvento.innerHTML = "Luego de caminar varios cientos de metros siguiendo tu brujula, te topas con un hombre que sale de los altos arbustos..";
+            ultimoEvento.innerHTML = "Luego de caminar varios cientos de metros siguiendo tu brújula, te topas con un hombre que sale de los altos arbustos..";
 
         } else if(player == true && escenario == 14){
             llave_aldeano = true;
-            
+            ruidoDeTap.play()
             document.querySelector(".boton_negar").src=`iconos/lineaTemporal/esquivar.png`;
             document.querySelector(".boton_aceptar").src=`iconos/lineaTemporal/atacar.png`;
 
             document.getElementById("vidaIc").src=`iconos/lineaTemporal/primerNPC.png`;
 
-            ultimoEvento.innerHTML = "- Que haces en mis tierras!? Maldito ladron voy a asesinarte!";
+            ultimoEvento.innerHTML = "-Que haces en mis tierras!? ¡Maldito ladrón voy a asesinarte!";
 
             salud_del_enemigo.classList.add("salud_del_enemigo_mostrar");
             boton_negar.classList.add("boton_mostrar");
@@ -255,6 +262,8 @@ function salta_de_evento(){
                     escenario = 14;
                     fuerzaDelAldeano = 0;
 
+                    ultimoEvento.innerHTML = "Has dejado inconsciente al hombre en el suelo, lo miras y no puedes acabar con él, pero robas 10 monedas de sus bolsillos"
+
                     ruidoDeGanarMonedas.play();
                     monedas = monedas + 10;
                     moneda.innerHTML = monedas;//Agregar notificacion
@@ -279,6 +288,10 @@ function salta_de_evento(){
 
                     if (daño_recibido > 0) {
                         salud_barra.value = salud_barra.value - daño_recibido;
+
+                        barra_de_salud_pantalla.classList.add("salud_mostrar");
+                        barra_de_salud_pantalla.value = salud_barra.value;
+
                     }
 
             }
@@ -288,15 +301,22 @@ function salta_de_evento(){
 
 
         } else if(player == true && escenario == 15 && aldeano == false){
+            barra_de_salud_pantalla.classList.remove("salud_mostrar");
             llave_aldeano = false;
             llave_norte = true;
             salud_del_enemigo.classList.remove("salud_del_enemigo_mostrar");
             boton_aceptar.classList.remove("boton_culdown");
             boton_negar.classList.remove("boton_culdown");
             
+            ruidoDeTap.play()
+            
+
+            puedes_avanzar_de_escenario = true;
+            var llave_para_mapache = 0;
+            
             document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono1.png`;
 
-            ultimoEvento.innerHTML = "Intentas utilizar nuevamente tu brujula pero no funciona, debio de haberse roto en el combate, debes elegir por donde avanzar";
+            ultimoEvento.innerHTML = "Intentas utilizar nuevamente tu brújula, pero no funciona, debió de haberse roto en el combate, debes elegir por donde avanzar";
             
 
             document.querySelector(".boton_negar").src=`iconos/lineaTemporal/izquierda.png`;
@@ -306,23 +326,30 @@ function salta_de_evento(){
             boton_negar.addEventListener("click",sur);
 
             function norte(){
-            if(puedes_avanzar_de_escenario == false && llave_norte == true){
+            if(puedes_avanzar_de_escenario == true && llave_norte == true){
                 ruidoDeGanarMonedas.play();
                 monedas = monedas + 10;
-                moneda.innerHTML = monedas;//Agregar notificacion
-                puedes_avanzar_de_escenario = true;
+                moneda.innerHTML = monedas;
 
+                ultimoEvento.innerHTML = "¡Encuentras un puñado de 10 monedas en el césped!";
+                document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono3.png`;
+                puedes_avanzar_de_escenario = false;
+                asd = true;
                 boton_aceptar.classList.add("boton_culdown");
                 boton_negar.classList.add("boton_culdown");
+                escenario = 15;
 
             }}
             function sur(){
-                if (puedes_avanzar_de_escenario == false && llave_norte == true){
+                if (puedes_avanzar_de_escenario == true && llave_norte == true){
                 ruidoDeEsquivar.play();
                 agilidad = agilidad + 1;
-                agilidad_inner.innerHTML = agilidad;//Agregar notificacion
-                puedes_avanzar_de_escenario = true;
-
+                agilidad_inner.innerHTML = agilidad;
+                puedes_avanzar_de_escenario = false;
+                document.getElementById("vidaIc").src=`iconos/lineaTemporal/esquivar.png`;
+                ultimoEvento.innerHTML = "El camino comienza a dificultarse cada vez más, tanto así que pasas horas intentando cruzar por unas rocas, pierdes algo de salud, pero aumentas tu agilidad.";
+                asd = true;
+                escenario = 15;
                 boton_aceptar.classList.add("boton_culdown");
                 boton_negar.classList.add("boton_culdown");
                 }
@@ -331,17 +358,18 @@ function salta_de_evento(){
             
         
 
-        } else if(player == true && escenario == 16 && aldeano == false && puedes_avanzar_de_escenario == true){
+        } else if(asd == true){
             llave_norte = false;
             llave_carta = true;
             boton_aceptar.classList.remove("boton_culdown");
             boton_negar.classList.remove("boton_culdown");
-
-            
+            ruidoDeTap.play()
+            puedes_avanzar_de_escenario = true;
+            llave_carta = true;
 
             document.getElementById("vidaIc").src=`iconos/lineaTemporal/correo.png`;
 
-            ultimoEvento.innerHTML = "Hay mucho viento, y notas que una carta de papel te sobre vuela las rodillas pero sigue de largo, al mismo tiempo vez el reflejo de unas monedas a lo lejos..";
+            ultimoEvento.innerHTML = "Hay mucho viento, y notas que una carta de papel te sobrevuela las rodillas, pero sigue de largo, al mismo tiempo vez el reflejo de unas monedas a lo lejos..";
         
 
             document.querySelector(".boton_negar").src=`iconos/lineaTemporal/elegir_correo.png`;
@@ -353,11 +381,20 @@ function salta_de_evento(){
             function elegir_correo(){
                 if (puedes_avanzar_de_escenario == true && llave_carta == true){
                     ruidoDeCarta.play();
-                    correo = true; //Poner notificacion
+                    correo = true;
                     puedes_avanzar_de_escenario = false;
 
                     boton_aceptar.classList.add("boton_culdown");
                     boton_negar.classList.add("boton_culdown");
+
+                    aldeano = false;
+                    escenario = 16;
+                    player = true;
+                    asd = false;
+
+
+                    document.getElementById("vidaIc").src=`iconos/lineaTemporal/elegir_correo.png`
+                    ultimoEvento.innerHTML = "Corres detrás del sobre que pareciera ir cada vez más rápido por culpa del viento, por poco, pero logras agarrarlo, intentas buscar las monedas que habías visto, pero no hay caso.. ";
                 }
             }
 
@@ -368,16 +405,27 @@ function salta_de_evento(){
                     moneda.innerHTML = monedas;//Agregar notificacion
                     puedes_avanzar_de_escenario = false;
 
+                    
+                    aldeano = false;
+                    escenario = 16;
+                    player = true;
+                    asd = false;
+
+                    document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono3.png`
+                    ultimoEvento.innerHTML = "Las brillantes monedas te llaman más que un pedazo de papel, consigues un puñado de 10 monedas.";
+
+                    
+
                     boton_aceptar.classList.add("boton_culdown");
                     boton_negar.classList.add("boton_culdown");
                 }
             }
             
 
-        } else if(player == true && escenario == 17 && aldeano == false && puedes_avanzar_de_escenario == false){
+        } else if(player == true && aldeano == false && puedes_avanzar_de_escenario == false && escenario == 17){
             llave_carta = false;
             llave_mapache = true;
-            
+            ruidoDeTap.play()
             document.querySelector(".boton_negar").src=`iconos/lineaTemporal/esquivar.png`;
             document.querySelector(".boton_aceptar").src=`iconos/lineaTemporal/atacar.png`;
 
@@ -387,7 +435,7 @@ function salta_de_evento(){
 
             document.getElementById("vidaIc").src=`iconos/lineaTemporal/mapache.png`;
 
-            ultimoEvento.innerHTML = "Un mapache se avalanza hacia tu cara!";
+            ultimoEvento.innerHTML = "¡Un mapache se abalanza hacia tu cara!";
 
 
             salud_del_enemigo.classList.add("salud_del_enemigo_mostrar");
@@ -408,8 +456,9 @@ function salta_de_evento(){
             let podes_atacar = true;
 
             function golpear_mapache(){
-                ruidoDeGolpear.play();
+                
                 if (podes_atacar == true && llave_mapache == true) {
+                    ruidoDeGolpear.play();
                     salud_del_enemigo.value = salud_del_enemigo.value - fuerza1;
                     podes_atacar = false;
                     boton_aceptar.classList.add("boton_culdown");
@@ -418,51 +467,127 @@ function salta_de_evento(){
                     return("No podes atacar");
                 }
 
-                if (salud_del_enemigo.value <= 0) {
+                if (salud_del_enemigo.value <= 0 && llave_mapache == true) {
                     aldeano = false;
                     escenario = 17;
                     fuerzaDelAldeano = 0;
 
                     nivel = nivel + 1;
                     nivel_inner.innerHTML = nivel;
-
+                    llave_para_mapache = 1;
                     ruidoDeGanarMonedas.play();
-                    monedas = monedas + 10;
+                    monedas = monedas + 55;
                     moneda.innerHTML = monedas;//Agregar notificacion
-
+                    ultimo = true;
                     boton_aceptar.classList.add("boton_culdown");
                     boton_negar.classList.add("boton_culdown");
+
+                    ultimoEvento.innerHTML = "Logras patear al molesto animal lejos de ti, mientras te sacudes la ropa vez 10 monedas brillantes en el suelo!";
                     
                 }
 
 
             }
 
+            let daño_recibido = 0;
+
             function bloquear_mapache(){
 
-                ruidoDeEsquivar.play();
-                let daño_recibido = fuerzaDelAldeano - agilidad;
-                podes_atacar = true;
-                boton_aceptar.classList.remove("boton_culdown");
-                boton_negar.classList.add("boton_culdown");
+                if (llave_mapache == true) {
+                    ruidoDeEsquivar.play();
+                    daño_recibido = fuerzaDelAldeano - agilidad;
+                    podes_atacar = true;
+                    boton_aceptar.classList.remove("boton_culdown");
+                    boton_negar.classList.add("boton_culdown");
+                }
+                
 
-                if (daño_recibido > 0) {
+                if (daño_recibido > 0 && llave_mapache == true) {
                     salud_barra.value = salud_barra.value - daño_recibido;
+                    barra_de_salud_pantalla.classList.add("salud_mostrar");
+                    barra_de_salud_pantalla.value = salud_barra.value;
                 }
 
             }
 
 
-        } else if(player == true && escenario == 18 && aldeano == false){
-
+        } else if(ultimo == true){
+            ultimo = false;
+            barra_de_salud_pantalla.classList.remove("salud_mostrar");
+            ruidoDeTap.play()
             llave_mapache = false;
+            llave_mapa = true;
 
             salud_del_enemigo.classList.remove("salud_del_enemigo_mostrar");
             
             document.getElementById("vidaIc").src=`iconos/lineaTemporal/mapa.png`;
 
-            ultimoEvento.innerHTML = "Vez un mapa que esta clavado en un arbol, puedes intentar seguir cualquiera de sus 2 rutas..";
-        }
+            document.querySelector(".boton_negar").src=`iconos/lineaTemporal/seguirElMapa.png`;
+            document.querySelector(".boton_aceptar").src=`iconos/lineaTemporal/hierbas.png`;
+
+            boton_aceptar.classList.remove("boton_culdown");
+            boton_negar.classList.remove("boton_culdown");
+
+            ultimoEvento.innerHTML = "Ves un mapa que está clavado en un árbol, puedes intentar seguir su camino o puedes ignorarlo e ir en busca de hierbas curativas..";
+       
+            boton_negar.classList.add("boton_mostrar");
+            boton_aceptar.classList.add("boton_mostrar");
+
+            boton_negar.addEventListener("click",irAlReinO);
+            boton_aceptar.addEventListener("click",buscarHierbas);
+            
+
+            function irAlReinO(){
+                if (llave_mapa == true) {
+
+                    ruidoDeCarta.play();
+                    document.getElementById("vidaIc").src=`iconos/lineaTemporal/seguirElMapa.png`;
+
+                    boton_aceptar.classList.add("boton_culdown");
+                    boton_negar.classList.add("boton_culdown");
+
+                    irAlReino = true;
+                    ultimoEvento.innerHTML = "Comienzas a seguir el mapa, el camino comienza a dificultarse pero igualmente continuas..";
+                    escenario = 18;
+
+                    llave_mapa = false;
+                }
+            }
+
+
+            function buscarHierbas(){
+                if (llave_mapa == true) {
+
+                    ruidoDeHierbas.play()
+                    document.getElementById("vidaIc").src=`iconos/lineaTemporal/icono7.png`;
+
+                    boton_aceptar.classList.add("boton_culdown");
+                    boton_negar.classList.add("boton_culdown");
+
+                    barra_de_salud_pantalla.classList.add("salud_mostrar");
+
+                    ultimoEvento.innerHTML = "Comienzas a recorrer el lugar en busca de hierbas, hay muchas! Pero conoces solo algunas, portando utilizas las que conoces para sanarte una herida que tienes en el brazo derecho..";
+                
+                    salud_barra.value = salud_barra.value + 10;
+                    barra_de_salud_pantalla.value = salud_barra.value;
+                    escenario = 18;
+
+                    llave_mapa = false;
+                }
+            }
+
+        } else if(llave_mapa == false){
+
+            barra_de_salud_pantalla.classList.remove("salud_mostrar");
+            ruidoDeTap.play();
+            ruidoDeFogata.play();
+            
+            document.getElementById("vidaIc").src=`iconos/lineaTemporal/fogata.gif`;
+            ultimoEvento.innerHTML = "Encuentras un pequeño lugar calmado, haces una fogata.. Y te sientas a esperar que Taiel algún día siga el desarrollo de este juego, gracias por jugar!"
+            
+
+        } else if(player == true && escenario == 20 && aldeano == false){}
+        
 
     });
 }
@@ -493,7 +618,7 @@ function mostrarAdn(){
           
     }
 
-        alert(`${nombreDeTuPersonaje} pudo encarnar su alma en las tierras de ${nombreDeTuMundo0}. De ahora en adelante se forjara tu camino.`)
+        alert(`${nombreDeTuPersonaje} pudo encarnar su alma en las tierras de "Epocas". De ahora en adelante se forjara su camino.`)
 
         escenario = 11;
         estadisticas = true;
@@ -538,6 +663,8 @@ function cerrarEstadisticass(){
 /* COMER Y SALUD DEL PJ */
 let barra_de_salud = document.querySelector(".salud");
 let hambre_barra = document.querySelector(".hambre");
+
+let barra_de_salud_pantalla = document.querySelector(".salud_pantalla");
 /* Elejir personaje */
 
 
@@ -558,6 +685,10 @@ let personaje_chica = document.querySelector(".personaje_chica");
 personaje_chica.addEventListener("click",elejirChica);
 
 function elejirChica(){
+
+    document.querySelector(".Adn").src=`iconos/characters/armor.png`;
+    adn2.classList.add("yaElijioPj");
+
 
     ruidoDeTap.play();
 
@@ -599,6 +730,10 @@ function elejirChica(){
 
 function elejirChico(){
 
+    document.querySelector(".Adn").src=`iconos/characters/armor.png`;
+    adn2.classList.add("yaElijioPj");
+
+
     ruidoDeTap.play();
 
     salud_barra.classList.add("salud_mostrar");
@@ -614,7 +749,7 @@ function elejirChico(){
     mina.classList.add("mina_si");
 
     if(fuerza1 == 1){
-        fuerza1 = fuerza1 + 2;
+        fuerza1 = fuerza1 + 1;
         fuerza_inner.innerHTML = fuerza1;
     }
    
@@ -632,7 +767,7 @@ function elejirChico(){
             barra_de_salud.value = barra_de_salud.value -10;
 
         } else{
-            alert(`Haz muerto, conseguiste una puntuacion de ${nivel * 7 + 155}`);
+            alert(`Has muerto, conseguiste una puntuación de ${nivel * 7 + 155}`);
         }
     }
  }
@@ -739,7 +874,7 @@ function comprarCofreDeMadera(){
 
             if(numeroRandom1 == 1 && plumaNegra == false){
                 plumaNegra = true;
-                alert(`Felicitaciones! Haz conseguido "Pluma Negra", aumenta tu agilidad!`);
+                alert(`¡Felicitaciones! Has conseguido "Pluma Negra", aumenta tu agilidad!`);
                 itemDeLaPluma.classList.add("itemDelInventario_mostrar");
                 agilidad = agilidad +5;
                 agilidad_inner.innerHTML = agilidad;
@@ -748,7 +883,7 @@ function comprarCofreDeMadera(){
                 arco1 = true;
                 itemDelArco.classList.add("itemDelInventario_mostrar");
 
-                alert(`Felicitaciones! Haz conseguido "Arco de madera", aumenta tu nivel y tu intelecto`);
+                alert(`¡Felicitaciones! Has conseguido "Arco de madera", aumenta tu nivel y tu intelecto`);
                 nivel = nivel + 1;
                 intelecto = intelecto + 2;
                 nivel_inner.innerHTML = nivel;
@@ -756,7 +891,7 @@ function comprarCofreDeMadera(){
 
             } else if(numeroRandom1 == 3 && guantelete == false){
                 guantelete = true;
-                alert(`Felicitaciones! Haz conseguido "Guantelete de cuero", aumenta tu fuerza y tu agilidad`);
+                alert(`¡Felicitaciones! Has conseguido "Guantelete de cuero", aumenta tu fuerza y tu agilidad`);
 
                 nivel = nivel + 1;
                 agilidad = agilidad + 2;
@@ -774,17 +909,17 @@ function comprarCofreDeMadera(){
                 puede_entrar_a_la_mina.classList.add("mina_si_href");
                 itemDePicoPrimitivo.classList.add("itemDelInventario_mostrar");
 
-                alert(`Felicitaciones! Haz conseguido "Pico primitivo", Ahora puedes minar!`);
+                alert(`¡Felicitaciones! Has conseguido "Pico primitivo", Ahora puedes minar!`);
             }else {
                 bayas = bayas + 1;
                 itemDebayas.classList.add("itemDelInventario_mostrar");
-                alert(`Felicitaciones! Haz conseguido unas bayas!`);
+                alert(`¡Felicitaciones! Has conseguido unas bayas!`);
             }
 
     } else if(monedas >= 25 && player == false){
         alert(`Primero debes crear tu personaje!`);
     } else{
-        alert(`Fondos insuficientes, faltan ${25 - monedas} Infinite coins`);
+        alert(`Fondos insuficientes, faltan ${25 - monedas} monedas`);
     }
 }
 
@@ -794,14 +929,14 @@ itemDebayas.addEventListener("click",comer_bayas);
 
 function comer_bayas(){
 
-    if(hambre_barra.value <= 75){
+    if(hambre_barra.value <= 95){
 
         bayas = bayas -1;
         hambre_barra.value = hambre_barra.value +25;
         ruidoDeComer_bayas.play();
 
     } else{
-        alert("Aun no tienes suficiente hambre");
+        alert("Aún no tienes suficiente hambre");
     }
 
     if (bayas == 0) {
@@ -837,6 +972,8 @@ function cerrarLogros(){
 
 /*Inventario*/
 
+
+
 let brazalete_nordico_inner = document.querySelector(".itemDelInventario_8"); 
 let pendiente_de_zafiro_inner = document.querySelector(".itemDelInventario_7");
 let collar_de_tiburon_inner = document.querySelector(".itemDelInventario_5");
@@ -851,8 +988,8 @@ let bag = document.querySelector(".bag");
 bag.addEventListener("click",abrirInventario);
 
 function abrirInventario(){
-
     ruidoDeAbrirMochila.play();
+    
 
     if(correo == true){
         itemDelCorreo.classList.add("itemDelInventario_mostrar");
@@ -908,9 +1045,8 @@ function cerrarInventario(){
 }
 
 /*Rewards of the Daily chest*/
-
 function OpenDailyChest(){
-
+    
     ruidoDeTap.play();
 
     let numeroRandom = Math.random()*100;

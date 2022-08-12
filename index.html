@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InfiniteGame</title>
+    <title>EpocasGame</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Kalam&family=Noto+Sans:ital,wght@1,500&display=swap" rel="stylesheet">
@@ -16,6 +16,9 @@
 </head>
 
 <body class="body" id="body">
+
+
+    <div class="change_resolution"> <p id="p_resolution"> Cambie el <b>width</b> (ancho) de la resolución a: <b>375px</b> para poder seguir. Disculpe las molestias. <br>Pronto se adaptará a todas las pantallas.</p> </div>
 
     <!-- Nav -->
 
@@ -118,7 +121,7 @@
 
                  <img src="iconos/Tienda/01cofreDeMadera.png" class="cofres cofreDeMadera">
                  <div class="AAA"> <p class="a1px">Contiene varias recompensas comunes.  
-                     Su valor es de 25 Infinite coins.<a class="comprarCofreDeMadera1"> Build</a></p></div>
+                     Su valor es de 25 Monedas.<a class="comprarCofreDeMadera1"> Build</a></p></div>
 
             </div> <br>
             <div class="itemDeLaTienda_1">
@@ -200,9 +203,11 @@
 
     <!-- Nombre de tu mundo, imagen y descipcion de los eventos-->
 
+    <progress class="salud salud_pantalla" max="100" value="100"></progress>
+
+
         <div class="gridItems2 gridItem2_1">
 
-            <p class="nombreDeTuMundo" id="nombreDeTuMundo1">"Nombre de tu mundo"</p>
 
             <img src="iconos/negar.png" class="boton boton_negar">
 
@@ -232,7 +237,7 @@
     <!-- Script del JS -->
 
     <script src="js.js"></script>
-        
+
 
     </div>
 </body>
